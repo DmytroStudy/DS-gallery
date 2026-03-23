@@ -205,6 +205,64 @@
     </main>
   </div>
 
+  <!-- Page: order -->
+  <div class="page" id="page-order">
+    <main>
+      <h1>Order</h1>
+      <div class="order-layout">
+
+        <!-- Left shipping form -->
+        <section class="order-form">
+          <h2 class="order-section-title">Shipping information</h2>
+
+          <div class="auth-field">
+            <label class="auth-label">Full Name</label>
+            <input class="auth-input" type="text" placeholder="Willem Dafoe"/>
+          </div>
+
+          <div class="auth-field">
+            <label class="auth-label">Card</label>
+            <input class="auth-input" type="text" placeholder="1234123412341234" style="margin-bottom:8px"/>
+            <div class="order-row">
+              <input class="auth-input" type="text" placeholder="MM/YY"/>
+              <input class="auth-input" type="text" placeholder="CVV"/>
+            </div>
+          </div>
+
+          <div class="auth-field">
+            <label class="auth-label">Location</label>
+            <select class="auth-input order-select">
+              <option>Select country</option>
+              <option>Slovakia</option>
+              <option>Czech Republic</option>
+              <option>Austria</option>
+              <option>Germany</option>
+              <option>Hungary</option>
+            </select>
+          </div>
+
+          <div class="order-terms">
+            <input type="checkbox" id="terms-check" checked/>
+            <div>
+              <label for="terms-check">I accept the terms</label>
+            </div>
+          </div>
+
+          <button class="auth-btn" style="margin-top:20px" onclick="showPage('home')">
+            Confirm payment
+          </button>
+        </section>
+
+        <!-- Right cart summary -->
+        <section class="order-summary">
+          <h2 class="order-section-title">Your cart:</h2>
+          <div class="order-cart-grid" id="order-cart-grid"></div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
   <!-- Page: login -->
   <div class="page" id="page-login">
     <main class="auth-main">
