@@ -92,6 +92,97 @@
     </main>
   </div>
 
+  <!-- Page: artworks -->
+  <div class="page" id="page-artworks" style="flex-direction:column">
+    <div class="aw-layout" style="flex:1;min-height:0">
+
+      <!-- Filter Panel -->
+      <div class="filter-panel">
+
+        <h2>Sort by</h2>
+        <div class="filter-check">
+          <label><input type="checkbox" checked/>Price</label>
+          <label><input type="checkbox" checked/>Name</label>
+          <label><input type="checkbox" checked/>Year</label>
+        </div>
+
+        <h2>Price</h2>
+        <div class="range-row"><span>$0</span><span>$1000</span></div>
+        <input type="range" min="0" max="1000" value="1000"/>
+
+        <h2>Year</h2>
+        <div class="range-row"><span>1200</span><span>2026</span></div>
+        <input type="range" min="1200" max="2026" value="2026"/>
+
+        <h2>Genre</h2>
+        <div class="filter-check">
+          <label><input type="checkbox" checked/>Realism</label>
+          <label><input type="checkbox" checked/>Impressionism</label>
+          <label><input type="checkbox" checked/>Abstract</label>
+        </div>
+      </div>
+
+      <!-- Grid -->
+      <div class="aw-main">
+        <h1>Artworks</h1>
+        <div class="masonry-grid" id="aw-grid"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page: artwork detail -->
+  <div class="page" id="page-detail">
+    <main>
+      <h1 id="detail-title">Artwork#1</h1>
+      <div class="detail-layout">
+        <div class="detail-img">
+          <div class="img-ph detail-img-ph">
+            <img class="ph-icon" src="images/home/placeholder.svg" alt=""/>
+          </div>
+        </div>
+        <div class="detail-meta">
+          <div class="meta-item">
+            <span class="meta-label">Artist</span>
+            <span class="meta-value" id="detail-artist">—</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Date</span>
+            <span class="meta-value" id="detail-year">—</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Genre</span>
+            <span class="meta-value" id="detail-genre">—</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Price</span>
+            <span class="meta-value" id="detail-price">—</span>
+          </div>
+
+          <div class="detail-right">
+            <div class="detail-qty">
+              <button class="qty-btn" onclick="changeQty(-1)">−</button>
+              <span class="qty-value" id="detail-qty">1</span>
+              <button class="qty-btn" onclick="changeQty(1)">+</button>
+            </div>
+            <div class="detail-icons">
+              <div class="sm-btn bag-btn" id="detail-bag">
+                <img src="icons/bag.svg" alt="Add to cart"/>
+              </div>
+              <div class="sm-btn bookmark-btn" id="detail-bookmark">
+                <img src="icons/bookmark.svg" alt="Save"/>
+              </div>
+            </div>
+            <div class="go-back-row">
+              <button class="go-back-btn" onclick="showPage('artworks')">Go back</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-desc" id="detail-desc"></div>
+    </main>
+  </div>
+
 </div>
 
 
