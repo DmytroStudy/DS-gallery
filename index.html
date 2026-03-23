@@ -41,9 +41,11 @@
 
   <!-- Sidebar -->
   <aside>
-    <button class="side-link active" onclick="showPage('home')">Home</button>
-    <button class="side-link" onclick="showPage('artworks')">Artworks</button>
-    <button class="side-link" onclick="showPage('artists')">Artists</button>
+    <nav>
+      <button class="side-link active" onclick="showPage('home')">Home</button>
+      <button class="side-link" onclick="showPage('artworks')">Artworks</button>
+      <button class="side-link" onclick="showPage('artists')">Artists</button>
+    </nav>
   </aside>
 
   <!-- Page: home -->
@@ -183,6 +185,38 @@
       <article class="detail-desc" id="detail-desc"></article>
     </main>
   </div>
+
+  <!-- Page: artists -->
+  <div class="page" id="page-artists" style="flex-direction:column">
+    <main class="ar-main">
+      <h1>Artists</h1>
+      <figure class="ar-list">
+        <article class="ar-item">
+          <figcaption>Vincent van Gogh (1853–1890) — a Dutch Post-Impressionist painter whose work marked a dramatic shift toward emotional
+            expression and individuality in art, as he developed a highly distinctive style characterized by bold, vibrant colors, thick brushstrokes,
+            and dynamic movement that conveyed his inner feelings and personal vision of the world, and although he struggled with poverty,
+            isolation, and mental health issues throughout his life, producing more than 2,000 artworks including paintings, drawings, and sketches,
+            he received little recognition during his lifetime, selling only a few works, yet after his death his art gained immense appreciation and
+            became central to the development of modern art, with iconic paintings such as "The Starry Night," "Sunflowers," and "Irises" now considered
+            masterpieces that demonstrate how color and form can express emotion rather than simply represent reality, and today Van Gogh is seen as one
+            of the most influential artists in history, whose legacy continues to inspire artists and audiences around the world.
+          </figcaption>
+          <div class="img-ph"><img class="art-image" src="images/home/Van_Gogh.jpg" alt=""/></div>
+        </article>
+        <article class="ar-item">
+          <figcaption>Pablo Picasso (1881–1973) — a Spanish painter, sculptor, and one of the most influential and innovative artists of the 20th century, who fundamentally changed the direction of modern art through his constant experimentation and willingness to challenge traditional artistic conventions, becoming best known for co-founding Cubism, a revolutionary movement that broke objects into geometric shapes and presented multiple perspectives simultaneously, allowing viewers to see subjects in a completely new way, and throughout his long and extraordinarily productive career he explored a wide range of styles and periods, including the melancholic Blue Period, the warmer Rose Period, and later bold and expressive works, creating thousands of paintings, sculptures, and prints, among which masterpieces such as "Guernica" and "Les Demoiselles d'Avignon" stand out for their emotional intensity and political significance, and his influence extended far beyond painting into sculpture, design, and visual culture as a whole, establishing him as a central figure in the history of modern and contemporary art.
+          </figcaption>
+          <div class="img-ph"><img class="art-image" src="images/home/Picasso.jpg" alt=""/></div>
+        </article>
+        <article class="ar-item">
+          <figcaption>Raphael (1483–1520) — an Italian painter and architect of the High Renaissance, widely regarded as one of the greatest artists in European history, whose work embodies harmony, clarity, and ideal beauty inspired by classical antiquity and humanist philosophy, and he became especially famous for his perfectly balanced compositions, graceful figures, and ability to convey complex ideas through clear and elegant visual language, with masterpieces such as "The School of Athens" and "The Sistine Madonna" demonstrating not only technical brilliance but also intellectual depth, as they combine perspective, proportion, and symbolism in a way that reflects the ideals of Renaissance culture, and during his relatively short life he worked in Florence and Rome, gaining recognition from powerful patrons including the papacy, which allowed him to contribute to major projects in the Vatican, and his influence extended far beyond his lifetime, shaping academic art traditions and setting standards of beauty and composition that were studied and admired by generations of artists across Europe for centuries.
+          </figcaption>
+          <div class="img-ph"><img class="art-image" src="images/home/Raphael.jpg" alt=""/></div>
+        </article>
+      </figure>
+    </main>
+  </div>
+
 
   <!-- Page: saved -->
   <div class="page" id="page-saved">
