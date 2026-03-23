@@ -1,5 +1,5 @@
-/* Artowrks */
-const AW_ITEMS = [
+/* Artworks */
+const ARTWORKS = [
     { name: 'Bridges Across the Seine at Asnières', price: '$450', img: 'images/art/van_gogh/Bridges_across_the_Seine_at_Asnieres.jpg', artist: 'Vincent van Gogh', year: '1887', genre: 'Impressionism', description: 'A calm riverside scene depicting bridges and reflections in the Seine.'},
     { name: 'Café Terrace at Night', price: '$950', img: 'images/art/van_gogh/Cafe_Terrace_at_Night.jpg', artist: 'Vincent van Gogh', year: '1888', genre: 'Impressionism', description: 'A vibrant night scene of a café illuminated under a starry sky.'},
     { name: 'Fishing in the Spring', price: '$500', img: 'images/art/van_gogh/Fishing_in_the_Spring.jpg', artist: 'Vincent van Gogh', year: '1887', genre: 'Impressionism', description: 'A peaceful spring landscape with figures fishing by the water.'},
@@ -54,4 +54,4 @@ const AW_ITEMS = [
 
 ];
 
-const DAY_ITEM = AW_ITEMS[AW_ITEMS.length - 1];
+const DAY_ITEM = ARTWORKS[ARTWORKS.length - 1];

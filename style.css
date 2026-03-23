@@ -108,7 +108,7 @@ body {
     flex-direction: column;
 }
 
-aside {
+aside nav{
     width: 128px;
     border-right: 1px solid var(--border);
     padding: 20px 10px;
