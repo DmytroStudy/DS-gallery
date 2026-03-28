@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DSgallery — Artists</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="d-flex flex-column" style="min-height:100vh">
+
+  <!-- Header -->
+  <nav class="navbar px-4 py-2 border-bottom sticky-top bg-white d-flex justify-content-between">
+    <a href="home.html"><img src="../images/home/logo.png" alt="DSgallery" style="max-height:40px"/></a>
+    <div class="d-flex align-items-center gap-2">
+      <div class="search-wrap">
+        <input type="text" placeholder="Search"/>
+        <img class="icon-search" src="../icons/search.svg" alt=""/>
+      </div>
+      <a class="icon-btn" href="cart.html"><img src="../icons/cart.svg" alt="Cart"/></a>
+      <a class="icon-btn" href="saved.html"><img src="../icons/bookmark.svg" alt="Saved"/></a>
+      <a class="log-btn" href="login.html">Log in</a>
+      <a class="log-btn" href="register.html">Register</a>
+    </div>
+  </nav>
+
+  <!-- Body -->
+  <div class="d-flex flex-grow-1">
+
+    <!-- Sidebar -->
+    <aside>
+      <nav>
+        <a class="side-link" href="home.html">Home</a>
+        <a class="side-link" href="artworks.html">Artworks</a>
+        <a class="side-link active" href="artists.html">Artists</a>
+      </nav>
+    </aside>
+
+    <!-- PAGE: ARTISTS -->
+    <main class="p-4 p-md-5 overflow-y-auto flex-grow-1">
+      <h1>Artists</h1>
+      <div class="d-flex flex-column">
+
+        <article class="border-top py-4">
+          <div class="row g-4">
+            <div class="col-12 col-md-7"><p style="font-size:18px;color:#333;line-height:1.75">Vincent van Gogh (1853–1890) — a Dutch Post-Impressionist painter whose work marked a dramatic shift toward emotional expression and individuality in art, as he developed a highly distinctive style characterized by bold, vibrant colors, thick brushstrokes, and dynamic movement that conveyed his inner feelings and personal vision of the world, and although he struggled with poverty, isolation, and mental health issues throughout his life, producing more than 2,000 artworks including paintings, drawings, and sketches, he received little recognition during his lifetime, selling only a few works, yet after his death his art gained immense appreciation and became central to the development of modern art, with iconic paintings such as "The Starry Night," "Sunflowers," and "Irises" now considered masterpieces, and today Van Gogh is seen as one of the most influential artists in history, whose legacy continues to inspire artists and audiences around the world.</p></div>
+            <div class="col-12 col-md-5"><div class="img-ph" style="height:350px"><img class="art-image" src="../images/home/Van_Gogh.jpg" alt=""/></div></div>
+          </div>
+        </article>
+
+        <article class="border-top py-4">
+          <div class="row g-4">
+            <div class="col-12 col-md-7"><p style="font-size:18px;color:#333;line-height:1.75">Pablo Picasso (1881–1973) — a Spanish painter, sculptor, and one of the most influential and innovative artists of the 20th century, who fundamentally changed the direction of modern art through his constant experimentation and willingness to challenge traditional artistic conventions, becoming best known for co-founding Cubism, a revolutionary movement that broke objects into geometric shapes and presented multiple perspectives simultaneously, and throughout his extraordinarily productive career he explored a wide range of styles including the melancholic Blue Period, the warmer Rose Period, and later bold and expressive works, with masterpieces such as "Guernica" and "Les Demoiselles d'Avignon" standing out for their emotional intensity and political significance.</p></div>
+            <div class="col-12 col-md-5"><div class="img-ph" style="height:350px"><img class="art-image" src="../images/home/Picasso.jpg" alt=""/></div></div>
+          </div>
+        </article>
+
+        <article class="border-top py-4">
+          <div class="row g-4">
+            <div class="col-12 col-md-7"><p style="font-size:18px;color:#333;line-height:1.75">Raphael (1483–1520) — an Italian painter and architect of the High Renaissance, widely regarded as one of the greatest artists in European history, whose work embodies harmony, clarity, and ideal beauty inspired by classical antiquity and humanist philosophy, and he became especially famous for his perfectly balanced compositions, graceful figures, and ability to convey complex ideas through clear and elegant visual language, with masterpieces such as "The School of Athens" and "The Sistine Madonna" demonstrating not only technical brilliance but also intellectual depth, and during his relatively short life he worked in Florence and Rome, gaining recognition from powerful patrons including the papacy.</p></div>
+            <div class="col-12 col-md-5"><div class="img-ph" style="height:350px"><img class="art-image" src="../images/home/Raphael.jpg" alt=""/></div></div>
+          </div>
+        </article>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="d-flex align-items-center gap-3 py-3 border-top" style="background:var(--card-bg); padding-left:1.5rem; padding-right:1.5rem">
+    <div class="d-flex gap-3">
+      <a href="#" class="opacity-50"><img src="../icons/twitter.svg" alt="Twitter" style="width:15px; height:15px"/></a>
+      <a href="#" class="opacity-50"><img src="../icons/instagram.svg" alt="Instagram" style="width:15px; height:15px"/></a>
+      <a href="#" class="opacity-50"><img src="../icons/youtube.svg" alt="YouTube" style="width:15px; height:15px"/></a>
+      <a href="#" class="opacity-50"><img src="../icons/linkedin.svg" alt="LinkedIn" style="width:15px; height:15px"/></a>
+    </div>
+    <p class="mb-0 text-muted small">© 2026 DSgallery. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

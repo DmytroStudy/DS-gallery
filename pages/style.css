@@ -1,0 +1,221 @@
+:root {
+    --bg: #ffffff;
+    --fg: #111111;
+    --muted: #888;
+    --border: #e0e0e0;
+    --card-bg: #eff1f3;
+    --font-display: 'Didot', serif;
+    --font-body: 'Didot', sans-serif;
+}
+
+body { font-family: var(--font-body); font-size: 14px; line-height: 1.65; }
+
+/* Search input with icon inside — no Bootstrap equivalent */
+.search-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 220px;
+    min-width: 120px;
+}
+.search-wrap input {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 34px 8px 16px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    width: 100%;
+    height: 35px;
+    outline: none;
+}
+.search-wrap input:focus { border-color: var(--fg); }
+.search-wrap .icon-search {
+    position: absolute; right: 12px; top: 50%;
+    transform: translateY(-50%);
+    width: 14px; height: 14px; opacity: .5; pointer-events: none;
+}
+
+/* Icon-only square button */
+.icon-btn {
+    width: 45px; height: 35px;
+    border: 1px solid var(--border); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg); text-decoration: none;
+}
+.icon-btn img { width: 16px; height: 16px; }
+
+/* Page switching via CSS :target */
+.page { display: none; flex: 1; flex-direction: column; min-height: 0; }
+
+body:not(:has(:target)) #home,
+#home:target, #artworks:target, #artists:target,
+#saved:target, #cart:target, #order:target,
+#login:target, #register:target, #detail:target { display: flex; }
+
+.body-wrap:has(#home:target) .side-link[href="#home"],
+.body-wrap:has(#artworks:target) .side-link[href="#artworks"],
+.body-wrap:has(#artists:target) .side-link[href="#artists"],
+body:not(:has(:target)) .side-link[href="#home"] {
+    background: var(--fg); color: var(--bg); border-color: transparent;
+}
+
+/* H1 — custom font/size not in Bootstrap */
+h1 {
+    font-family: var(--font-display);
+    font-size: 40px;
+    font-weight: 400;
+    margin-bottom: 28px;
+}
+h2 {
+    font-family: var(--font-body);
+}
+
+/* Auth page title — custom display font */
+.auth-title { font-family: var(--font-display); font-size: 36px; font-weight: 400; margin-bottom: 6px; letter-spacing: -.5px; }
+
+/* Meta labels on detail page */
+.meta-label { font-size: 10.5px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+.meta-value { font-size: 14px; }
+
+/* Image container — custom background + full-cover image */
+.img-ph {
+    background: var(--card-bg); display: flex; align-items: center;
+    justify-content: center; border-radius: 2px; position: relative; overflow: hidden;
+}
+img.art-image { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Overlay action buttons on tiles */
+.bottom-actions { position: absolute; bottom: 10px; right: 10px; display: flex; gap: 6px; }
+.sm-btn {
+    width: 32px;
+    height: 28px;
+    background: rgba(255,255,255,.95);
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.sm-btn img { width: 12px; height: 12px; }
+.sm-btn.in-cart, .sm-btn.in-saved { background: var(--fg); }
+.sm-btn.in-cart img, .sm-btn.in-saved img { filter: invert(1); }
+
+/* News card — custom 2-col grid with fixed right column */
+.news-card { display: grid; grid-template-columns: 1fr 380px; gap: 30px; }
+.news-img { max-height: 400px; }
+
+/* Artwork of the day — full-width fixed-height block */
+.day-wrap {
+    display: block; border: 1px solid var(--border); border-radius: 3px;
+    width: 100%; height: 400px; position: relative; overflow: hidden;
+}
+.day-wrap > img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Artwork tile */
+.tile-img { display: block; height: 300px; }
+.tile-info { padding: 9px 12px; }
+.tile-info .name { font-size: 13px; color: #555; }
+.tile-info .price { font-size: 13px; font-weight: 500; }
+
+
+
+
+/* Sidebar — custom sticky layout */
+aside {
+    display: flex;
+    flex-shrink: 0;
+}
+aside nav {
+    width: 128px;
+    border-right: 1px solid var(--border);
+    padding: 4px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: sticky;
+    top: 70px;
+    height: 100%;
+}
+.side-link {
+    display: block;
+    padding: 9px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--fg);
+    font-family: var(--font-body);
+    text-decoration: none;
+}
+/* Filter panel — custom sidebar width + sticky scroll */
+.filter-panel {
+    width: 200px;
+    border-right: 1px solid var(--border);
+    padding: 20px 16px;
+    font-size: 12.5px;
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+.filter-panel h2 {
+    font-size: 10.5px; font-weight: 500; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--muted);
+    margin-top: 16px; margin-bottom: 7px;
+}
+.filter-panel h2:first-child { margin-top: 0; }
+.filter-check { display: flex; flex-direction: column; gap: 5px; }
+.filter-check label { display: flex; align-items: flex-start; gap: 6px; font-size: 12.5px; cursor: pointer; }
+.filter-check input { margin-top: 2px; accent-color: var(--fg); }
+
+.aw-main { overflow-y: auto; flex: 1; }
+
+.order-btn{
+    font-family:var(--font-body);
+    color: var(--fg);
+    font-size: 25px;
+    font-weight:400;
+    padding: 15px 30px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+.log-btn {
+    width: 80px;
+    height: 35px;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--fg);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Mobile only */
+@media (max-width: 575px) {
+    body { height: auto !important; overflow: visible !important; }
+
+    .d-flex.flex-grow-1.overflow-hidden { flex-direction: column; overflow: visible !important; }
+
+    aside nav {
+        width: 90px; border-right: 1px solid var(--border);
+        padding: 4px 10px; display: flex; flex-direction: column; gap: 4px;
+        position: sticky; top: 57px; height: calc(100vh - 57px); flex-shrink: 0;
+    }
+
+    .side-link {
+        display: block; padding: 9px 9px;
+        border: 1px solid var(--border); border-radius: 8px;
+        font-size: 13px; color: var(--fg); font-family: var(--font-body); text-decoration: none;
+    }
+    .side-link { white-space: nowrap; }
+
+    .page { overflow-y: visible; }
+    main { overflow-y: visible !important; }
+
+    h1 { font-size: 26px; }
+    .news-card { grid-template-columns: 1fr; }
+
+
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DSgallery — Detail</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="d-flex flex-column" style="min-height:100vh">
+
+  <!-- Header -->
+  <nav class="navbar px-4 py-2 border-bottom sticky-top bg-white d-flex justify-content-between">
+    <a href="home.html"><img src="../images/home/logo.png" alt="DSgallery" style="max-height:40px"/></a>
+    <div class="d-flex align-items-center gap-2">
+      <div class="search-wrap">
+        <input type="text" placeholder="Search"/>
+        <img class="icon-search" src="../icons/search.svg" alt=""/>
+      </div>
+      <a class="icon-btn" href="cart.html"><img src="../icons/cart.svg" alt="Cart"/></a>
+      <a class="icon-btn" href="saved.html"><img src="../icons/bookmark.svg" alt="Saved"/></a>
+      <a class="log-btn" href="login.html">Log in</a>
+      <a class="log-btn" href="register.html">Register</a>
+    </div>
+  </nav>
+
+  <!-- Body -->
+  <div class="d-flex flex-grow-1">
+
+    <!-- Sidebar -->
+    <aside>
+      <nav>
+        <a class="side-link" href="home.html">Home</a>
+        <a class="side-link active" href="artworks.html">Artworks</a>
+        <a class="side-link" href="artists.html">Artists</a>
+      </nav>
+    </aside>
+
+    <!-- PAGE: DETAIL -->
+    <main class="p-4 p-md-5 overflow-y-auto flex-grow-1">
+      <h1>Bridges across the Seine at Asnieres</h1>
+      <div class="row g-4 align-items-start mb-4">
+        <div class="col-12 col-md-8">
+          <div class="border rounded-1 overflow-hidden">
+            <div class="img-ph" style="height:500px"><img class="art-image" src="../images/art/van_gogh/Bridges_across_the_Seine_at_Asnieres.jpg" alt="" style="object-fit:contain"/></div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4 d-flex flex-column gap-4 pt-2">
+          <div>
+            <div class="meta-label">Artist</div>
+            <div class="meta-value">Vincent van Gogh</div>
+          </div>
+          <div>
+            <div class="meta-label">Date</div>
+            <div class="meta-value">1887</div>
+          </div>
+          <div>
+            <div class="meta-label">Genre</div>
+            <div class="meta-value">Impressionism</div>
+          </div>
+          <div>
+            <div class="meta-label">Price</div>
+            <div class="meta-value">879€</div>
+          </div>
+          <div class="border-top pt-3 d-flex flex-column gap-2">
+            <div class="d-flex align-items-center gap-1" style="width: 100px">
+              <button class="sm-btn" style="width: 100%">−</button>
+              <span class="text-center" style="font-size:16px">1</span>
+              <button class="sm-btn" style="width: 100%">+</button>
+            </div>
+            <div class="d-flex gap-2" style="width: 100px">
+              <div class="sm-btn" style="width: 100%"><img src="../icons/bag.svg" alt="Add to cart"/></div>
+              <div class="sm-btn" style="width: 100%"><img src="../icons/bookmark.svg" alt="Save"/></div>
+            </div>
+            <div class="d-flex">
+              <a class="log-btn" style="border-width:2px; width:100px;" href="artworks.html">Go back</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:18px; color:var(--muted); padding-top:24px">
+        A calm riverside scene depicting bridges and reflections in the Seine.
+      </p>
+    </main>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="d-flex align-items-center gap-3 py-3 border-top" style="background:var(--card-bg); padding-left:1.5rem; padding-right:1.5rem">
+    <div class="d-flex gap-3">
+      <a href="#" class="opacity-50"><img src="../icons/twitter.svg" alt="Twitter" style="width:15px; height:15px"/></a>
+      <a href="#" class="opacity-50"><img src="../icons/instagram.svg" alt="Instagram" style="width:15px; height:15px"/></a>
+      <a href="#" class="opacity-50"><img src="../icons/youtube.svg" alt="YouTube" style="width:15px; height:15px"/></a>
+      <a href="#" class="opacity-50"><img src="../icons/linkedin.svg" alt="LinkedIn" style="width:15px; height:15px"/></a>
+    </div>
+    <p class="mb-0 text-muted small">© 2026 DSgallery. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
