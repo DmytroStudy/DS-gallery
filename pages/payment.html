@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DSgallery — Payment</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* Checkout step indicator (same as shipping.html) */
+    .checkout-steps {
+      display: flex; align-items: center; gap: 0;
+      margin-bottom: 40px;
+    }
+    .step { display: flex; align-items: center; gap: 8px; }
+    .step-num {
+      width: 26px; height: 26px; border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 500;
+      background: var(--bg); color: var(--muted); flex-shrink: 0;
+    }
+    .step.active .step-num { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+    .step.done  .step-num  { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+    .step-label { font-size: 12px; color: var(--muted); white-space: nowrap; }
+    .step.active .step-label { color: var(--fg); font-weight: 500; }
+    .step-sep { flex: 1; height: 1px; background: var(--border); margin: 0 12px; min-width: 24px; }
+
+    /* Payment method tabs */
+    .pay-tabs { display: flex; gap: 8px; margin-bottom: 24px; }
+    .pay-tab {
+      padding: 8px 18px; border: 1px solid var(--border); border-radius: 8px;
+      font-size: 13px; cursor: pointer; background: var(--bg); color: var(--muted);
+      transition: all .15s;
+    }
+    .pay-tab.active { border-color: var(--fg); color: var(--fg); font-weight: 500; }
+
+    /* Order summary panel */
+    .summary-panel { background: var(--card-bg); border-radius: 8px; padding: 20px; }
+    .summary-item { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .summary-thumb { width: 52px; height: 40px; border-radius: 3px; object-fit: cover; background: #ddd; flex-shrink: 0; }
+    .summary-item-name { font-size: 12px; color: #555; line-height: 1.3; }
+    .summary-item-price { font-size: 12px; font-weight: 500; margin-left: auto; white-space: nowrap; }
+    .summary-divider { border: none; border-top: 1px solid var(--border); margin: 14px 0; }
+    .summary-total-row { display: flex; justify-content: space-between; align-items: baseline; }
+    .summary-total-label { font-size: 10.5px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+    .summary-total-value { font-size: 18px; font-weight: 500; font-family: var(--font-display); }
+  </style>
+</head>
+<body class="d-flex flex-column" style="min-height:100vh">
+
+<!-- Header -->
+<nav class="navbar px-4 py-2 border-bottom sticky-top bg-white d-flex justify-content-between">
+  <a href="home.html"><img src="../images/home/logo.png" alt="DSgallery" style="max-height:40px"/></a>
+  <div class="d-flex align-items-center gap-2">
+    <div class="search-wrap">
+      <input type="text" placeholder="Search"/>
+      <img class="icon-search" src="../icons/search.svg" alt=""/>
+    </div>
+    <a class="icon-btn" href="cart.html"><img src="../icons/cart.svg" alt="Cart"/></a>
+    <a class="icon-btn" href="saved.html"><img src="../icons/bookmark.svg" alt="Saved"/></a>
+    <a class="log-btn" href="login.html">Log in</a>
+    <a class="log-btn" href="register.html">Register</a>
+  </div>
+</nav>
+
+<!-- Body -->
+<div class="d-flex flex-grow-1">
+
+  <!-- Sidebar -->
+  <aside>
+    <nav>
+      <a class="side-link" href="home.html">Home</a>
+      <a class="side-link" href="artworks.html">Artworks</a>
+      <a class="side-link" href="artists.html">Artists</a>
+    </nav>
+  </aside>
+
+  <!-- PAGE: PAYMENT -->
+  <main class="p-4 p-md-5 overflow-y-auto flex-grow-1">
+    <h1>Checkout</h1>
+
+    <!-- Step indicator -->
+    <div class="checkout-steps">
+      <div class="step done">
+        <div class="step-num">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span class="step-label">Cart</span>
+      </div>
+      <div class="step-sep"></div>
+      <div class="step done">
+        <div class="step-num">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span class="step-label">Shipping</span>
+      </div>
+      <div class="step-sep"></div>
+      <div class="step active">
+        <div class="step-num">3</div>
+        <span class="step-label">Payment</span>
+      </div>
+    </div>
+
+    <div class="row g-5">
+
+      <!-- Payment form -->
+      <section class="col-12 col-md-7">
+        <h2 class="fw-500 fs-6 mb-4">Payment details</h2>
+
+        <!-- Payment method tabs -->
+        <div class="pay-tabs">
+          <div class="pay-tab active" onclick="selectTab(this)">Credit card</div>
+          <div class="pay-tab" onclick="selectTab(this)">PayPal</div>
+          <div class="pay-tab" onclick="selectTab(this)">Bank transfer</div>
+        </div>
+
+        <!-- Card inputs -->
+        <div id="card-fields">
+          <div class="mb-3">
+            <label class="form-label small fw-semibold">Cardholder name</label>
+            <input class="form-control" type="text" id="inp-name" placeholder="Willem Dafoe"/>
+          </div>
+          <div class="mb-3">
+            <label class="form-label small fw-semibold">Card number</label>
+            <input class="form-control" type="text" id="inp-num" placeholder="1234 1234 1234 1234"
+                   maxlength="19" oninput="formatCardNum(this)"/>
+          </div>
+          <div class="row g-3 mb-4">
+            <div class="col-6">
+              <label class="form-label small fw-semibold">Expiry date</label>
+              <input class="form-control" type="text" id="inp-exp" placeholder="MM/YY"
+                     maxlength="5" oninput="formatExpiry(this)"/>
+            </div>
+            <div class="col-6">
+              <label class="form-label small fw-semibold">CVV</label>
+              <input class="form-control" type="password" placeholder="•••" maxlength="4"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-check mb-4">
+          <input class="form-check-input" type="checkbox" id="terms-check" checked/>
+          <label class="form-check-label small" for="terms-check">
+            I accept the <a href="#" style="color:var(--fg)">terms and conditions</a>
+          </label>
+        </div>
+
+        <a class="btn btn-dark w-100 py-2" href="home.html" style="font-size:15px">Confirm payment — 4 579€</a>
+
+        <div class="mt-3">
+          <a href="shipping.html" style="font-size:13px; color:var(--muted); text-decoration:none;">← Back to shipping</a>
+        </div>
+      </section>
+
+      <!-- Order summary -->
+      <section class="col-12 col-md-5">
+        <h2 class="fw-500 fs-6 mb-4">Order summary</h2>
+        <div class="summary-panel">
+          <div class="summary-item">
+            <img class="summary-thumb" src="../images/art/van_gogh/Bridges_across_the_Seine_at_Asnieres.jpg" alt=""/>
+            <span class="summary-item-name">Bridges Across the Seine</span>
+            <span class="summary-item-price">879€</span>
+          </div>
+          <div class="summary-item">
+            <img class="summary-thumb" src="../images/art/van_gogh/Cafe_Terrace_at_Night.jpg" alt=""/>
+            <span class="summary-item-name">Café Terrace at Night</span>
+            <span class="summary-item-price">950€</span>
+          </div>
+          <div class="summary-item">
+            <img class="summary-thumb" src="../images/art/van_gogh/Fishing_in_the_Spring.jpg" alt=""/>
+            <span class="summary-item-name">Fishing in the Spring</span>
+            <span class="summary-item-price">880€</span>
+          </div>
+          <div class="summary-item">
+            <img class="summary-thumb" src="../images/art/van_gogh/Fritillaries_in_a_Copper_Vase.jpg" alt=""/>
+            <span class="summary-item-name">Fritillaries in a Copper Vase</span>
+            <span class="summary-item-price">1 000€</span>
+          </div>
+          <div class="summary-item" style="margin-bottom:0">
+            <img class="summary-thumb" src="../images/art/van_gogh/Interior_of_a_Restaurant.jpg" alt=""/>
+            <span class="summary-item-name">Interior of a Restaurant</span>
+            <span class="summary-item-price">870€</span>
+          </div>
+          <hr class="summary-divider"/>
+          <div class="summary-total-row mb-2">
+            <span class="summary-total-label">Subtotal</span>
+            <span style="font-size:13px; font-weight:500">4 579€</span>
+          </div>
+          <div class="summary-total-row mb-2">
+            <span class="summary-total-label">Shipping</span>
+            <span style="font-size:13px; color:var(--muted)">Free</span>
+          </div>
+          <hr class="summary-divider"/>
+          <div class="summary-total-row">
+            <span class="summary-total-label">Total</span>
+            <span class="summary-total-value">4 579€</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<!-- Footer -->
+<footer class="d-flex align-items-center gap-3 py-3 border-top" style="background:var(--card-bg); padding-left:1.5rem; padding-right:1.5rem">
+  <div class="d-flex gap-3">
+    <a href="#" class="opacity-50"><img src="../icons/twitter.svg" alt="Twitter" style="width:15px; height:15px"/></a>
+    <a href="#" class="opacity-50"><img src="../icons/instagram.svg" alt="Instagram" style="width:15px; height:15px"/></a>
+    <a href="#" class="opacity-50"><img src="../icons/youtube.svg" alt="YouTube" style="width:15px; height:15px"/></a>
+    <a href="#" class="opacity-50"><img src="../icons/linkedin.svg" alt="LinkedIn" style="width:15px; height:15px"/></a>
+  </div>
+  <p class="mb-0 text-muted small">© 2026 DSgallery. All rights reserved.</p>
+</footer>
+
+<script>
+  function selectTab(el) {
+    document.querySelectorAll('.pay-tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  function formatCardNum(input) {
+    let v = input.value.replace(/\D/g, '').slice(0, 16);
+    input.value = v.replace(/(.{4})/g, '$1 ').trim();
+  }
+
+  function formatExpiry(input) {
+    let v = input.value.replace(/\D/g, '').slice(0, 4);
+    if (v.length >= 3) v = v.slice(0, 2) + '/' + v.slice(2);
+    input.value = v;
+  }
+</script>
+
+</body>
+</html>
