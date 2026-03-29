@@ -17,8 +17,8 @@
         <input type="text" placeholder="Search"/>
         <img class="icon-search" src="../icons/search.svg" alt=""/>
       </div>
-      <span class="log-btn active">admin</span>
-      <a class="log-btn" href="admin_login.html">Log out</a>
+      <span class="mid-btn active">admin</span>
+      <a class="mid-btn" href="admin_login.html">Log out</a>
     </div>
   </nav>
 
@@ -40,7 +40,7 @@
 
         <!-- Image upload -->
         <div class="col-12 col-md-8">
-          <label class="img-upload-empty w-100" style="cursor:pointer">
+          <label class="img-upload w-100" style="cursor:pointer">
             <img class="art-image" src="../images/art/van_gogh/Bridges_across_the_Seine_at_Asnieres.jpg" alt="" style="width: 100%; height: 505px; object-fit:contain"/>
             <input type="file" accept="image/*" style="display:none"/>
           </label>
@@ -50,19 +50,19 @@
         <div class="col-12 col-md-4 d-flex flex-column gap-4">
 
           <div>
-            <div class="meta-label mb-1">Title</div>
+            <div class="muted-label mb-1">TITLE</div>
             <input class="edit-input" type="text" placeholder="Café Terrace at Night" value="Bridges across the Seine at Asnieres"/>
           </div>
           <div>
-            <div class="meta-label mb-1">Artist</div>
+            <div class="muted-label mb-1">ARTIST</div>
             <input class="edit-input" type="text" placeholder="Vincent van Gogh"  value="Vincent van Gogh"/>
           </div>
           <div>
-            <div class="meta-label mb-1">Date</div>
+            <div class="muted-label mb-1">DATE</div>
             <input class="edit-input" type="text" placeholder="1888"  value="1887"/>
           </div>
           <div>
-            <div class="meta-label mb-1">Genre</div>
+            <div class="muted-label mb-1">GENRE</div>
             <select class="edit-input" style="cursor:pointer">
               <option value="" disabled selected>Select genre</option>
               <option selected>Impressionism</option>
@@ -71,16 +71,16 @@
             </select>
           </div>
           <div>
-            <div class="meta-label mb-1">Price (€)</div>
+            <div class="muted-label mb-1">PRICE (€)</div>
             <input class="edit-input" type="number" placeholder="0" value="879"/>
           </div>
           <div>
-            <div class="meta-label mb-1">Description</div>
+            <div class="muted-label mb-1">DESCRIPTION</div>
             <textarea class="edit-input" rows="4" style="resize:vertical" placeholder="Description of the artwork...">A calm riverside scene depicting bridges and reflections in the Seine.</textarea>
           </div>
 
           <div class="border-top pt-3 d-flex gap-2">
-            <a class="log-btn" href="admin_artworks.html">Cancel</a>
+            <a class="mid-btn" href="admin_artworks.html">Cancel</a>
             <button class="btn btn-dark btn-sm flex-grow-1">Save artwork</button>
           </div>
 

@@ -17,10 +17,10 @@
         <input type="text" placeholder="Search"/>
         <img class="icon-search" src="../icons/search.svg" alt=""/>
       </div>
-      <a class="icon-btn" href="cart.html"><img src="../icons/cart.svg" alt="Cart"/></a>
-      <a class="icon-btn" href="saved.html"><img src="../icons/bookmark.svg" alt="Saved"/></a>
-      <a class="log-btn" href="login.html">Log in</a>
-      <a class="log-btn" href="register.html">Register</a>
+      <a class="mid-icon-btn" href="cart.html"><img src="../icons/cart.svg" alt="Cart"/></a>
+      <a class="mid-icon-btn" href="saved.html"><img src="../icons/bookmark.svg" alt="Saved"/></a>
+      <a class="mid-btn" href="login.html">Log in</a>
+      <a class="mid-btn" href="register.html">Register</a>
     </div>
   </nav>
 
@@ -39,40 +39,43 @@
     <div class="d-flex flex-grow-1">
 
       <!-- Filter panel -->
-      <div class="filter-panel d-none d-md-block">
+      <div class="d-flex flex-column flex-md-row flex-grow-1">
+        <div class="filter-panel w-100 w-md-auto">
 
-        <h2>Sort by</h2>
-        <select class="form-select" style="font-size:13px">
-          <option>Price</option>
-          <option>Year</option>
-          <option>Name</option>
-        </select>
+          <p class="muted-label">SORT BY</p>
+          <select class="form-select" style="font-size:13px">
+            <option>Price</option>
+            <option>Year</option>
+            <option>Name</option>
+          </select>
 
-        <h2>Price</h2>
-        <div class="d-flex justify-content-between" style="font-size:11px; color:var(--muted)">
-          <span>0€</span>
-          <span>1000€</span>
-        </div>
+          <p class="muted-label">PRICE</p>
+          <div class="d-flex justify-content-between" style="font-size:11px; color:var(--muted)">
+            <span>0€</span>
+            <span>1000€</span>
+          </div>
 
-        <input type="range" min="0" max="1000" value="1000" class="w-100"/>
+          <input type="range" min="0" max="1000" value="1000" class="w-100"/>
 
-        <h2>Year</h2>
-        <div class="d-flex justify-content-between" style="font-size:11px;color:var(--muted)">
-          <span>1200</span>
-          <span>2026</span>
-        </div>
-        <input type="range" min="1200" max="2026" value="2026" class="w-100"/>
-        <h2>Genre</h2>
-        <div class="filter-check">
-          <label><input type="checkbox" checked/>Impressionism</label>
-          <label><input type="checkbox" checked/>Renaissance</label>
-          <label><input type="checkbox" checked/>Abstract</label>
+          <p class="muted-label">YEAR</p>
+          <div class="d-flex justify-content-between" style="font-size:11px;color:var(--muted)">
+            <span>1200</span>
+            <span>2026</span>
+          </div>
+          <input type="range" min="1200" max="2026" value="2026" class="w-100"/>
+
+          <p class="muted-label">GENRE</p>
+          <div class="filter-check">
+            <label><input type="checkbox" checked/>Impressionism</label>
+            <label><input type="checkbox" checked/>Renaissance</label>
+            <label><input type="checkbox" checked/>Abstract</label>
+          </div>
         </div>
       </div>
 
       <!-- Product grid -->
       <div class="mx-auto">
-        <main class="aw-main p-4">
+        <main class="aw-main p-4" style="overflow-y: auto; flex: 1;">
 
           <h1>Artworks</h1>
 
@@ -80,11 +83,11 @@
 
             <div class="col">
               <figure class="card p-0">
-                <a class="img-ph" style="height:300px" href="detail.html">
+                <a class="img-card" style="height:300px" href="detail.html">
                   <img class="art-image" src="../images/art/van_gogh/Bridges_across_the_Seine_at_Asnieres.jpg" alt=""/>
-                  <div class="bottom-actions">
-                    <button class="sm-btn"><img src="../icons/cart.svg" alt=""/></button>
-                    <button class="sm-btn"><img src="../icons/bookmark.svg" alt=""/></button>
+                  <div class="tile-btns">
+                    <button class="sm-icon-btn"><img src="../icons/cart.svg" alt=""/></button>
+                    <button class="sm-icon-btn"><img src="../icons/bookmark.svg" alt=""/></button>
                   </div>
                 </a>
                 <div class="tile-info">
@@ -96,11 +99,11 @@
 
             <div class="col">
               <figure class="card p-0">
-                <a class="img-ph" style="height:300px" href="detail.html">
+                <a class="img-card" style="height:300px" href="detail.html">
                   <img class="art-image" src="../images/art/van_gogh/Cafe_Terrace_at_Night.jpg" alt=""/>
-                  <div class="bottom-actions">
-                    <button class="sm-btn"><img src="../icons/cart.svg" alt=""/></button>
-                    <button class="sm-btn"><img src="../icons/bookmark.svg" alt=""/></button>
+                  <div class="tile-btns">
+                    <button class="sm-icon-btn"><img src="../icons/cart.svg" alt=""/></button>
+                    <button class="sm-icon-btn"><img src="../icons/bookmark.svg" alt=""/></button>
                   </div>
                 </a>
                 <div class="tile-info">
@@ -112,11 +115,11 @@
 
             <div class="col">
               <figure class="card p-0">
-                <a class="img-ph" style="height:300px" href="detail.html">
+                <a class="img-card" style="height:300px" href="detail.html">
                   <img class="art-image" src="../images/art/van_gogh/Fishing_in_the_Spring.jpg" alt=""/>
-                  <div class="bottom-actions">
-                    <button class="sm-btn"><img src="../icons/cart.svg" alt=""/></button>
-                    <button class="sm-btn"><img src="../icons/bookmark.svg" alt=""/></button>
+                  <div class="tile-btns">
+                    <button class="sm-icon-btn"><img src="../icons/cart.svg" alt=""/></button>
+                    <button class="sm-icon-btn"><img src="../icons/bookmark.svg" alt=""/></button>
                   </div>
                 </a>
                 <div class="tile-info">
@@ -128,11 +131,11 @@
 
             <div class="col">
               <figure class="card p-0">
-                <a class="img-ph" style="height:300px" href="detail.html">
+                <a class="img-card" style="height:300px" href="detail.html">
                   <img class="art-image" src="../images/art/van_gogh/Fritillaries_in_a_Copper_Vase.jpg" alt=""/>
-                  <div class="bottom-actions">
-                    <button class="sm-btn"><img src="../icons/cart.svg" alt=""/></button>
-                    <button class="sm-btn"><img src="../icons/bookmark.svg" alt=""/></button>
+                  <div class="tile-btns">
+                    <button class="sm-icon-btn"><img src="../icons/cart.svg" alt=""/></button>
+                    <button class="sm-icon-btn"><img src="../icons/bookmark.svg" alt=""/></button>
                   </div>
                 </a>
                 <div class="tile-info">
@@ -144,11 +147,11 @@
 
             <div class="col">
               <figure class="card p-0">
-                <a class="img-ph" style="height:300px" href="detail.html">
+                <a class="img-card" style="height:300px" href="detail.html">
                   <img class="art-image" src="../images/art/van_gogh/Interior_of_a_Restaurant.jpg" alt=""/>
-                  <div class="bottom-actions">
-                    <button class="sm-btn"><img src="../icons/cart.svg" alt=""/></button>
-                    <button class="sm-btn"><img src="../icons/bookmark.svg" alt=""/></button>
+                  <div class="tile-btns">
+                    <button class="sm-icon-btn"><img src="../icons/cart.svg" alt=""/></button>
+                    <button class="sm-icon-btn"><img src="../icons/bookmark.svg" alt=""/></button>
                   </div>
                 </a>
                 <div class="tile-info">
@@ -160,11 +163,11 @@
 
             <div class="col">
               <figure class="card p-0">
-                <a class="img-ph" style="height:300px" href="detail.html">
+                <a class="img-card" style="height:300px" href="detail.html">
                   <img class="art-image" src="../images/art/van_gogh/Irises.jpg" alt=""/>
-                  <div class="bottom-actions">
-                    <button class="sm-btn"><img src="../icons/cart.svg" alt=""/></button>
-                    <button class="sm-btn"><img src="../icons/bookmark.svg" alt=""/></button>
+                  <div class="tile-btns">
+                    <button class="sm-icon-btn"><img src="../icons/cart.svg" alt=""/></button>
+                    <button class="sm-icon-btn"><img src="../icons/bookmark.svg" alt=""/></button>
                   </div>
                 </a>
                 <div class="tile-info">
@@ -176,11 +179,11 @@
 
             <div class="col">
               <figure class="card p-0">
-                <a class="img-ph" style="height:300px" href="detail.html">
+                <a class="img-card" style="height:300px" href="detail.html">
                   <img class="art-image" src="../images/art/van_gogh/Landscape_with_House_and_Ploughman.jpg" alt=""/>
-                  <div class="bottom-actions">
-                    <button class="sm-btn"><img src="../icons/cart.svg" alt=""/></button>
-                    <button class="sm-btn"><img src="../icons/bookmark.svg" alt=""/></button>
+                  <div class="tile-btns">
+                    <button class="sm-icon-btn"><img src="../icons/cart.svg" alt=""/></button>
+                    <button class="sm-icon-btn"><img src="../icons/bookmark.svg" alt=""/></button>
                   </div>
                 </a>
                 <div class="tile-info">
@@ -192,11 +195,11 @@
 
             <div class="col">
               <figure class="card p-0">
-                <a class="img-ph" style="height:300px" href="detail.html">
+                <a class="img-card" style="height:300px" href="detail.html">
                   <img class="art-image" src="../images/art/van_gogh/Red_Vineyards_at_Arles.jpg" alt=""/>
-                  <div class="bottom-actions">
-                    <button class="sm-btn"><img src="../icons/cart.svg" alt=""/></button>
-                    <button class="sm-btn"><img src="../icons/bookmark.svg" alt=""/></button>
+                  <div class="tile-btns">
+                    <button class="sm-icon-btn"><img src="../icons/cart.svg" alt=""/></button>
+                    <button class="sm-icon-btn"><img src="../icons/bookmark.svg" alt=""/></button>
                   </div>
                 </a>
                 <div class="tile-info">
@@ -208,11 +211,11 @@
 
             <div class="col">
               <figure class="card p-0">
-                <a class="img-ph" style="height:300px" href="detail.html">
+                <a class="img-card" style="height:300px" href="detail.html">
                   <img class="art-image" src="../images/art/van_gogh/Skull_with_burning_cigarette.jpg" alt=""/>
-                  <div class="bottom-actions">
-                    <button class="sm-btn"><img src="../icons/cart.svg" alt=""/></button>
-                    <button class="sm-btn"><img src="../icons/bookmark.svg" alt=""/></button>
+                  <div class="tile-btns">
+                    <button class="sm-icon-btn"><img src="../icons/cart.svg" alt=""/></button>
+                    <button class="sm-icon-btn"><img src="../icons/bookmark.svg" alt=""/></button>
                   </div>
                 </a>
                 <div class="tile-info">
