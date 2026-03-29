@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DSgallery: detail</title>
+  <title>DSgallery: cart_payment</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="style.css"/>
 </head>
@@ -35,58 +35,47 @@
       </nav>
     </aside>
 
-    <!-- Detailed artwork -->
-    <main class="p-4 overflow-y-auto flex-grow-1">
+    <!-- Payment -->
+    <main class="d-flex justify-content-center p-4 flex-grow-1">
+      <div style="width:100%;max-width:500px">
+        <h1>Payment details</h1>
 
-      <h1>Bridges across the Seine at Asnieres</h1>
+        <div class="pay-tabs">
+          <div class="pay-tab active">Credit card</div>
+          <div class="pay-tab">PayPal</div>
+          <div class="pay-tab">Bank transfer</div>
+        </div>
 
-      <div class="row g-4 align-items-start mb-4">
-
-        <div class="col-12 col-md-8">
-          <div class="border rounded-1 overflow-hidden">
-            <div class="img-ph" style="height:500px">
-              <img class="art-image" src="../images/art/van_gogh/Bridges_across_the_Seine_at_Asnieres.jpg" alt="" style="object-fit:contain"/>
+        <div id="card-fields">
+          <div class="mb-3">
+            <label class="form-label small fw-semibold">Cardholder name</label>
+            <input class="form-control" type="text" placeholder="Willem Dafoe"/>
+          </div>
+          <div class="mb-3">
+            <label class="form-label small fw-semibold">Card number</label>
+            <input class="form-control" type="text" placeholder="1234 1234 1234 1234"
+                   maxlength="19"/>
+          </div>
+          <div class="row g-3 mb-4">
+            <div class="col-6">
+              <label class="form-label small fw-semibold">Expiry date</label>
+              <input class="form-control" type="text" placeholder="MM/YY"
+                     maxlength="5"/>
+            </div>
+            <div class="col-6">
+              <label class="form-label small fw-semibold">CVV</label>
+              <input class="form-control" type="password" placeholder="•••" maxlength="3"/>
             </div>
           </div>
         </div>
 
-        <div class="col-12 col-md-4 d-flex flex-column gap-4 pt-2">
-          <div>
-            <div class="meta-label">Artist</div>
-            <div class="meta-value">Vincent van Gogh</div>
-          </div>
-          <div>
-            <div class="meta-label">Date</div>
-            <div class="meta-value">1887</div>
-          </div>
-          <div>
-            <div class="meta-label">Genre</div>
-            <div class="meta-value">Impressionism</div>
-          </div>
-          <div>
-            <div class="meta-label">Price</div>
-            <div class="meta-value">879€</div>
-          </div>
-          <div class="border-top pt-3 d-flex flex-column gap-2">
-            <div class="d-flex align-items-center gap-1" style="width: 100px">
-              <button class="sm-btn" style="width: 100%">−</button>
-              <span class="text-center" style="font-size:16px">1</span>
-              <button class="sm-btn" style="width: 100%">+</button>
-            </div>
-            <div class="d-flex gap-2" style="width: 100px">
-              <div class="sm-btn" style="width: 100%"><img src="../icons/cart.svg" alt="Add to cart"/></div>
-              <div class="sm-btn" style="width: 100%"><img src="../icons/bookmark.svg" alt="Save"/></div>
-            </div>
-            <div class="d-flex">
-              <a class="log-btn" style="border-width:2px; width:100px; height: 28px" href="artworks.html">Go back</a>
-            </div>
-          </div>
+        <a class="btn btn-dark w-100 py-2" href="home.html" style="font-size:15px">Confirm payment: 4 579€</a>
+
+        <div class="mt-3">
+          <a href="cart_shipping.html" style="font-size:13px; color:var(--muted); text-decoration:none;">Back to shipping</a>
         </div>
+
       </div>
-
-      <p style="font-size:18px; color:var(--muted); padding-top:24px">
-        A calm riverside scene depicting bridges and reflections in the Seine.
-      </p>
     </main>
 
   </div>

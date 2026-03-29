@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DSgallery: admin_add</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="d-flex flex-column" style="min-height:100vh">
+
+  <!-- Header -->
+  <nav class="navbar px-4 py-2 border-bottom sticky-top bg-white d-flex justify-content-between">
+    <a href="home.html"><img src="../images/home/logo.png" alt="DSgallery" style="max-height:40px"/></a>
+    <div class="d-flex align-items-center gap-2">
+      <div class="search-wrap">
+        <input type="text" placeholder="Search"/>
+        <img class="icon-search" src="../icons/search.svg" alt=""/>
+      </div>
+      <span class="log-btn active">admin</span>
+      <a class="log-btn" href="admin_login.html">Log out</a>
+    </div>
+  </nav>
+
+  <!-- Body -->
+  <div class="d-flex flex-grow-1">
+
+    <!-- Sidebar -->
+    <aside>
+      <nav>
+        <a class="side-link" href="home.html">Home</a>
+        <a class="side-link active" href="admin_artworks.html">Artworks</a>
+      </nav>
+    </aside>
+
+    <!-- New detailed artwork -->
+    <main class="p-4 overflow-y-auto flex-grow-1">
+
+      <div class="row g-4 align-items-start">
+
+        <!-- Image upload -->
+        <div class="col-12 col-md-8">
+          <label class="img-upload-empty w-100" style="cursor:pointer">
+            <img src="../icons/img.svg"/>
+            <span>Click to upload image</span>
+            <input type="file" accept="image/*" style="display:none"/>
+          </label>
+        </div>
+
+        <!-- Meta fields -->
+        <div class="col-12 col-md-4 d-flex flex-column gap-4">
+
+          <div>
+            <div class="meta-label mb-1">Title</div>
+            <input class="edit-input" type="text" placeholder="Café Terrace at Night"/>
+          </div>
+          <div>
+            <div class="meta-label mb-1">Artist</div>
+            <input class="edit-input" type="text" placeholder="Vincent van Gogh"/>
+          </div>
+          <div>
+            <div class="meta-label mb-1">Date</div>
+            <input class="edit-input" type="text" placeholder="1888"/>
+          </div>
+          <div>
+            <div class="meta-label mb-1">Genre</div>
+            <select class="edit-input" style="cursor:pointer">
+              <option value="" disabled selected>Select genre</option>
+              <option>Impressionism</option>
+              <option>Renaissance</option>
+              <option>Abstract</option>
+            </select>
+          </div>
+          <div>
+            <div class="meta-label mb-1">Price (€)</div>
+            <input class="edit-input" type="number" placeholder="0"/>
+          </div>
+          <div>
+            <div class="meta-label mb-1">Description</div>
+            <textarea class="edit-input" rows="4" style="resize:vertical" placeholder="Description of the artwork..."></textarea>
+          </div>
+
+          <div class="border-top pt-3 d-flex gap-2">
+            <a class="log-btn" href="admin_artworks.html">Cancel</a>
+            <button class="btn btn-dark btn-sm flex-grow-1">Save artwork</button>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="d-flex align-items-center gap-3 py-3 border-top" style="background:var(--card-bg);padding-left:1.5rem;padding-right:1.5rem">
+    <div class="d-flex gap-3">
+      <a href="#" class="opacity-50"><img src="../icons/twitter.svg" alt="Twitter" style="width:15px;height:15px"/></a>
+      <a href="#" class="opacity-50"><img src="../icons/instagram.svg" alt="Instagram" style="width:15px;height:15px"/></a>
+      <a href="#" class="opacity-50"><img src="../icons/youtube.svg" alt="YouTube" style="width:15px;height:15px"/></a>
+      <a href="#" class="opacity-50"><img src="../icons/linkedin.svg" alt="LinkedIn" style="width:15px;height:15px"/></a>
+    </div>
+    <p class="mb-0 text-muted small">© 2026 DSgallery. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

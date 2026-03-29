@@ -3,55 +3,10 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DSgallery: cart</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="style.css"/>
-  <style>
-      .cart-thumb {
-          width: 72px; height: 56px; border-radius: 4px;
-          object-fit: cover; background: var(--card-bg); display: block; flex-shrink: 0;
-      }
-      .qty-control {
-          display: inline-flex; align-items: center;
-          border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
-      }
-      .qty-btn {
-          width: 28px; height: 28px; border: none; background: none;
-          font-size: 16px; cursor: pointer; color: var(--fg);
-          display: flex; align-items: center; justify-content: center;
-      }
-      .qty-num {
-          width: 32px; text-align: center; font-size: 13px;
-          font-family: var(--font-body); border: none;
-          border-left: 1px solid var(--border); border-right: 1px solid var(--border);
-          outline: none; background: none;
-          -moz-appearance: textfield;
-      }
-      .qty-num::-webkit-outer-spin-button,
-      .qty-num::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
-
-      .cart-row {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          padding: 14px 0;
-          border-bottom: 1px solid var(--border);
-          flex-wrap: wrap;
-      }
-      .cart-row-name {
-          flex: 1;
-          min-width: 80px;
-      }
-      .cart-row-name h2 { margin: 0; }
-      .cart-row-controls {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          flex-shrink: 0;
-      }
-      .cart-row-price { margin: 0; white-space: nowrap; }
-  </style>
 </head>
-
 <body class="d-flex flex-column" style="min-height:100vh">
 
   <!-- Header -->
@@ -102,7 +57,7 @@
           <h2>879€</h2>
         </div>
         <div class="row col-md-1 gap-1">
-            <button class="sm-btn in-cart"><img src="../icons/bag.svg" alt=""/></button>
+            <button class="sm-btn in-cart"><img src="../icons/cart.svg" alt=""/></button>
             <button class="sm-btn"><img src="../icons/bookmark.svg" alt=""/></button>
         </div>
       </div>
@@ -125,7 +80,7 @@
           <h2>950€</h2>
         </div>
         <div class="row col-md-1 gap-1">
-          <button class="sm-btn in-cart"><img src="../icons/bag.svg" alt=""/></button>
+          <button class="sm-btn in-cart"><img src="../icons/cart.svg" alt=""/></button>
           <button class="sm-btn"><img src="../icons/bookmark.svg" alt=""/></button>
         </div>
       </div>
@@ -148,7 +103,7 @@
           <h2>880€</h2>
         </div>
         <div class="row col-md-1 gap-1">
-          <button class="sm-btn in-cart"><img src="../icons/bag.svg" alt=""/></button>
+          <button class="sm-btn in-cart"><img src="../icons/cart.svg" alt=""/></button>
           <button class="sm-btn"><img src="../icons/bookmark.svg" alt=""/></button>
         </div>
       </div>
@@ -171,7 +126,7 @@
           <h2>999€</h2>
         </div>
         <div class="row col-md-1 gap-1">
-          <button class="sm-btn in-cart"><img src="../icons/bag.svg" alt=""/></button>
+          <button class="sm-btn in-cart"><img src="../icons/cart.svg" alt=""/></button>
           <button class="sm-btn"><img src="../icons/bookmark.svg" alt=""/></button>
         </div>
       </div>
@@ -194,18 +149,21 @@
           <h2>870€</h2>
         </div>
         <div class="row col-md-1 gap-1">
-          <button class="sm-btn in-cart"><img src="../icons/bag.svg" alt=""/></button>
+          <button class="sm-btn in-cart"><img src="../icons/cart.svg" alt=""/></button>
           <button class="sm-btn"><img src="../icons/bookmark.svg" alt=""/></button>
         </div>
       </div>
 
       <div class="mt-4 border-top pt-3">
         <div class="d-flex justify-content-end mb-4 mt-1">
-          <span style="font-size:22px;font-weight:500;font-family:var(--font-display)">4 579€</span>
+          <span style="font-size:22px;font-weight:500;font-family:var(--font-body)">4 579€</span>
         </div>
         <div class="d-flex justify-content-end">
-          <a class="order-btn" href="shipping.html">Continue to shipping</a>
+          <a class="order-btn" href="cart_shipping.html">Continue to shipping</a>
         </div>
+        <p class="text-end text-muted small mt-3">Already have an account?
+          <a href="login.html" class="text-dark fw-semibold text-decoration-none">Log in</a>
+        </p>
       </div>
     </main>
   </div>
@@ -220,7 +178,6 @@
     </div>
     <p class="mb-0 text-muted small">© 2026 DSgallery. All rights reserved.</p>
   </footer>
-
 
 </body>
 </html>

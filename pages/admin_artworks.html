@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DSgallery: artworks</title>
+  <title>DSgallery: admin_artworks</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="style.css"/>
 </head>
@@ -17,21 +17,19 @@
         <input type="text" placeholder="Search"/>
         <img class="icon-search" src="../icons/search.svg" alt=""/>
       </div>
-      <a class="icon-btn" href="cart.html"><img src="../icons/cart.svg" alt="Cart"/></a>
-      <a class="icon-btn" href="saved.html"><img src="../icons/bookmark.svg" alt="Saved"/></a>
-      <a class="log-btn" href="login.html">Log in</a>
-      <a class="log-btn" href="register.html">Register</a>
+      <span class="log-btn active">admin</span>
+      <a class="log-btn" href="admin_login.html">Log out</a>
     </div>
   </nav>
 
   <!-- Body -->
-  <div class="d-flex flex-grow-1 ">
+  <div class="d-flex flex-grow-1">
 
     <!-- Sidebar -->
     <aside>
       <nav>
         <a class="side-link" href="home.html">Home</a>
-        <a class="side-link active" href="admin_artworks.html">Artworks</a>
+        <a class="side-link active" href="artworks.html">Artworks</a>
       </nav>
     </aside>
 
@@ -73,15 +71,15 @@
       <!-- Product grid -->
       <div class="mx-auto">
         <main class="aw-main p-4">
-
           <h1>Artworks</h1>
 
           <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
 
             <div class="col">
               <figure class="card p-0">
-                <a class="img-ph" style="height:300px" href="detail.html">
+                <a class="img-ph" style="height:300px" href="admin_detail.html">
                   <img class="art-image" src="../images/art/van_gogh/Bridges_across_the_Seine_at_Asnieres.jpg" alt=""/>
+                  <button class="sm-btn delete"><img src="../icons/x.svg" alt=""/></button>
                   <div class="bottom-actions">
                     <button class="sm-btn"><img src="../icons/cart.svg" alt=""/></button>
                     <button class="sm-btn"><img src="../icons/bookmark.svg" alt=""/></button>
@@ -96,8 +94,9 @@
 
             <div class="col">
               <figure class="card p-0">
-                <a class="img-ph" style="height:300px" href="detail.html">
+                <a class="img-ph" style="height:300px" href="admin_detail.html">
                   <img class="art-image" src="../images/art/van_gogh/Cafe_Terrace_at_Night.jpg" alt=""/>
+                  <button class="sm-btn delete"><img src="../icons/x.svg" alt=""/></button>
                   <div class="bottom-actions">
                     <button class="sm-btn"><img src="../icons/cart.svg" alt=""/></button>
                     <button class="sm-btn"><img src="../icons/bookmark.svg" alt=""/></button>
@@ -112,8 +111,9 @@
 
             <div class="col">
               <figure class="card p-0">
-                <a class="img-ph" style="height:300px" href="detail.html">
+                <a class="img-ph" style="height:300px" href="admin_detail.html">
                   <img class="art-image" src="../images/art/van_gogh/Fishing_in_the_Spring.jpg" alt=""/>
+                  <button class="sm-btn delete"><img src="../icons/x.svg" alt=""/></button>
                   <div class="bottom-actions">
                     <button class="sm-btn"><img src="../icons/cart.svg" alt=""/></button>
                     <button class="sm-btn"><img src="../icons/bookmark.svg" alt=""/></button>
@@ -128,8 +128,9 @@
 
             <div class="col">
               <figure class="card p-0">
-                <a class="img-ph" style="height:300px" href="detail.html">
+                <a class="img-ph" style="height:300px" href="admin_detail.html">
                   <img class="art-image" src="../images/art/van_gogh/Fritillaries_in_a_Copper_Vase.jpg" alt=""/>
+                  <button class="sm-btn delete"><img src="../icons/x.svg" alt=""/></button>
                   <div class="bottom-actions">
                     <button class="sm-btn"><img src="../icons/cart.svg" alt=""/></button>
                     <button class="sm-btn"><img src="../icons/bookmark.svg" alt=""/></button>
@@ -144,8 +145,9 @@
 
             <div class="col">
               <figure class="card p-0">
-                <a class="img-ph" style="height:300px" href="detail.html">
+                <a class="img-ph" style="height:300px" href="admin_detail.html">
                   <img class="art-image" src="../images/art/van_gogh/Interior_of_a_Restaurant.jpg" alt=""/>
+                  <button class="sm-btn delete"><img src="../icons/x.svg" alt=""/></button>
                   <div class="bottom-actions">
                     <button class="sm-btn"><img src="../icons/cart.svg" alt=""/></button>
                     <button class="sm-btn"><img src="../icons/bookmark.svg" alt=""/></button>
@@ -160,8 +162,9 @@
 
             <div class="col">
               <figure class="card p-0">
-                <a class="img-ph" style="height:300px" href="detail.html">
+                <a class="img-ph" style="height:300px" href="admin_detail.html">
                   <img class="art-image" src="../images/art/van_gogh/Irises.jpg" alt=""/>
+                  <button class="sm-btn delete"><img src="../icons/x.svg" alt=""/></button>
                   <div class="bottom-actions">
                     <button class="sm-btn"><img src="../icons/cart.svg" alt=""/></button>
                     <button class="sm-btn"><img src="../icons/bookmark.svg" alt=""/></button>
@@ -176,8 +179,9 @@
 
             <div class="col">
               <figure class="card p-0">
-                <a class="img-ph" style="height:300px" href="detail.html">
+                <a class="img-ph" style="height:300px" href="admin_detail.html">
                   <img class="art-image" src="../images/art/van_gogh/Landscape_with_House_and_Ploughman.jpg" alt=""/>
+                  <button class="sm-btn delete"><img src="../icons/x.svg" alt=""/></button>
                   <div class="bottom-actions">
                     <button class="sm-btn"><img src="../icons/cart.svg" alt=""/></button>
                     <button class="sm-btn"><img src="../icons/bookmark.svg" alt=""/></button>
@@ -192,8 +196,9 @@
 
             <div class="col">
               <figure class="card p-0">
-                <a class="img-ph" style="height:300px" href="detail.html">
+                <a class="img-ph" style="height:300px" href="admin_detail.html">
                   <img class="art-image" src="../images/art/van_gogh/Red_Vineyards_at_Arles.jpg" alt=""/>
+                  <button class="sm-btn delete"><img src="../icons/x.svg" alt=""/></button>
                   <div class="bottom-actions">
                     <button class="sm-btn"><img src="../icons/cart.svg" alt=""/></button>
                     <button class="sm-btn"><img src="../icons/bookmark.svg" alt=""/></button>
@@ -206,20 +211,12 @@
               </figure>
             </div>
 
-            <div class="col">
-              <figure class="card p-0">
-                <a class="img-ph" style="height:300px" href="detail.html">
-                  <img class="art-image" src="../images/art/van_gogh/Skull_with_burning_cigarette.jpg" alt=""/>
-                  <div class="bottom-actions">
-                    <button class="sm-btn"><img src="../icons/cart.svg" alt=""/></button>
-                    <button class="sm-btn"><img src="../icons/bookmark.svg" alt=""/></button>
-                  </div>
-                </a>
-                <div class="tile-info">
-                  <figcaption class="name">Skull with Burning Cigarette</figcaption>
-                  <div class="price">980€</div>
-                </div>
-              </figure>
+            <!-- Add new artwork card -->
+            <div class="col mb-3">
+              <a class="add-card" href="admin_add.html">
+                <img src="../icons/add.svg" style="color:var(--muted); width:30px; height: 30px;"/>
+                <span>Add artwork</span>
+              </a>
             </div>
 
           </div>
@@ -239,7 +236,6 @@
       </div>
 
     </div>
-
   </div>
 
   <!-- Footer -->
