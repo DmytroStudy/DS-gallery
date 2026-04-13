@@ -23,52 +23,82 @@
         <div style="width:100%;max-width:500px">
             <h1 class="mb-3">Shipping information</h1>
 
-            <div class="row g-3 mb-3">
-                <div class="col-6">
-                    <label class="form-label small fw-semibold">First Name</label>
-                    <input class="form-control" type="text" placeholder="Willem"/>
-                </div>
-                <div class="col-6">
-                    <label class="form-label small fw-semibold">Last Name</label>
-                    <input class="form-control" type="text" placeholder="Dafoe"/>
-                </div>
-            </div>
-            <div class="mb-3">
-                <label class="form-label small fw-semibold">Email</label>
-                <input class="form-control" type="email"
-                       value="{{ Auth::user()?->email }}" placeholder="email@example.com"/>
-            </div>
-            <div class="mb-3">
-                <label class="form-label small fw-semibold">Phone</label>
-                <input class="form-control" type="tel" placeholder="+421 900 000 000"/>
-            </div>
-            <div class="mb-3">
-                <label class="form-label small fw-semibold">Country</label>
-                <select class="form-select">
-                    <option>Slovakia</option><option>Czech Republic</option>
-                    <option>Austria</option><option>Germany</option><option>Hungary</option>
-                </select>
-            </div>
-            <div class="row g-3 mb-3">
-                <div class="col-8">
-                    <label class="form-label small fw-semibold">City</label>
-                    <input class="form-control" type="text" placeholder="Bratislava"/>
-                </div>
-                <div class="col-4">
-                    <label class="form-label small fw-semibold">Postal code</label>
-                    <input class="form-control" type="text" placeholder="81101"/>
-                </div>
-            </div>
-            <div class="mb-4">
-                <label class="form-label small fw-semibold">Street address</label>
-                <input class="form-control mb-2" type="text" placeholder="Street and house number"/>
-                <input class="form-control" type="text" placeholder="Apartment, floor (optional)"/>
-            </div>
+            <form method="POST" action="{{ route('cart.payment.show') }}">
+                @csrf
 
-            <div class="d-flex justify-content-between align-items-center mt-4">
-                <a href="{{ route('cart') }}" style="font-size:13px;color:var(--muted);text-decoration:none">Back to cart</a>
-                <a class="btn btn-dark px-4" href="{{ route('cart.payment') }}">Continue to payment</a>
-            </div>
+                @if ($errors->any())
+                    <div class="alert alert-danger py-2 mb-3" style="font-size:13px">
+                        <ul class="mb-0 ps-3">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <div class="row g-3 mb-3">
+                    <div class="col-6">
+                        <label class="form-label small fw-semibold">First Name</label>
+                        <input class="form-control" type="text" name="first_name"
+                               placeholder="Willem" value="{{ old('first_name') }}" required/>
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label small fw-semibold">Last Name</label>
+                        <input class="form-control" type="text" name="last_name"
+                               placeholder="Dafoe" value="{{ old('last_name') }}" required/>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label small fw-semibold">Email</label>
+                    <input class="form-control" type="email" name="email"
+                           value="{{ old('email', Auth::user()?->email) }}"
+                           placeholder="email@example.com" required/>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label small fw-semibold">Phone</label>
+                    <input class="form-control" type="tel" name="phone"
+                           placeholder="+421 900 000 000" value="{{ old('phone') }}"/>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label small fw-semibold">Country</label>
+                    <select class="form-select" name="country" required>
+                        @foreach (['Slovakia','Czech Republic','Austria','Germany','Hungary'] as $c)
+                            <option {{ old('country') === $c ? 'selected' : '' }}>{{ $c }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="row g-3 mb-3">
+                    <div class="col-8">
+                        <label class="form-label small fw-semibold">City</label>
+                        <input class="form-control" type="text" name="city"
+                               placeholder="Bratislava" value="{{ old('city') }}" required/>
+                    </div>
+                    <div class="col-4">
+                        <label class="form-label small fw-semibold">Postal code</label>
+                        <input class="form-control" type="text" name="postal_code"
+                               placeholder="81101" value="{{ old('postal_code') }}" required/>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label small fw-semibold">Street address</label>
+                    <input class="form-control mb-2" type="text" name="address"
+                           placeholder="Street and house number" value="{{ old('address') }}" required/>
+                    <input class="form-control" type="text" name="address2"
+                           placeholder="Apartment, floor (optional)" value="{{ old('address2') }}"/>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center mt-4">
+                    <a href="{{ route('cart') }}"
+                       style="font-size:13px;color:var(--muted);text-decoration:none">Back to cart</a>
+                    <button type="submit" class="btn btn-dark px-4">Continue to payment</button>
+                </div>
+
+            </form>
         </div>
     </main>
 </div>

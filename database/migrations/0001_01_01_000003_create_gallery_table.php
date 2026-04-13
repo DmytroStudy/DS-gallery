@@ -1,6 +1,5 @@
 <?php
 
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -22,7 +21,6 @@ return new class extends Migration {
         Schema::create('artworks', function (Blueprint $table) {
             $table->id('artwork_id');
             $table->string('title');
-            // $table->integer('artist_id');
             $table->integer('year')->nullable();
             $table->string('genre')->nullable();
             $table->integer('price')->default(0);
@@ -30,15 +28,26 @@ return new class extends Migration {
             $table->string('image')->nullable();
             $table->timestamps();
 
-            $table->foreignID('artist_id')->references('artist_id')->on('artists')->cascadeOnDelete();
+            $table->foreignId('artist_id')->references('artist_id')->on('artists')->cascadeOnDelete();
         });
 
         // 3. Orders (depends on users)
         Schema::create('orders', function (Blueprint $table) {
             $table->id('order_id');
             $table->unsignedBigInteger('user_id');
-            $table->integer('price')->default(0);
             $table->string('status')->default('pending');
+            $table->unsignedInteger('total')->default(0);
+            $table->string('payment_method')->nullable();
+            // Shipping snapshot
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('country')->nullable();
+            $table->string('city')->nullable();
+            $table->string('postal_code')->nullable();
+            $table->string('address')->nullable();
+            $table->string('address2')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
@@ -50,6 +59,10 @@ return new class extends Migration {
             $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('artwork_id');
             $table->integer('quantity')->default(1);
+            // Price/title/artist snapshot at time of purchase
+            $table->string('title')->nullable();
+            $table->string('artist')->nullable();
+            $table->unsignedInteger('price')->default(0);
             $table->timestamps();
 
             $table->foreign('order_id')->references('order_id')->on('orders')->cascadeOnDelete();

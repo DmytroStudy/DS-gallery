@@ -8,7 +8,14 @@ class OrderItem extends Model
 {
     protected $primaryKey = 'order_item_id';
 
-    protected $fillable = ['order_id', 'artwork_id', 'quantity'];
+    protected $fillable = [
+        'order_id',
+        'artwork_id',
+        'quantity',
+        'title',
+        'artist',
+        'price',
+    ];
 
     public function order()
     {

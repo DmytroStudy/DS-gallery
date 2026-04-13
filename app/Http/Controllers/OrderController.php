@@ -14,6 +14,10 @@ class OrderController extends Controller
             return redirect()->route('cart')->with('error', 'Your cart is empty.');
         }
 
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'You must be logged in to continue.');
+        }
+
         $user = Auth::user();
 
         return view('cart_shipping', compact('user'));
@@ -23,6 +27,10 @@ class OrderController extends Controller
     {
         if (empty(session('cart', []))) {
             return redirect()->route('cart');
+        }
+
+        if (!Auth::check()) {
+            return redirect()->route('login');
         }
 
         $shipping = $request->validate([
@@ -39,7 +47,7 @@ class OrderController extends Controller
 
         session(['shipping' => $shipping]);
 
-        $cart  = session('cart', []);
+        $cart = session('cart', []);
         $total = collect($cart)->sum(fn ($i) => $i['price'] * $i['quantity']);
 
         return view('cart_payment', compact('total'));
@@ -47,7 +55,11 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
-        $cart     = session('cart', []);
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+
+        $cart = session('cart', []);
         $shipping = session('shipping', []);
 
         if (empty($cart) || empty($shipping)) {

@@ -10,7 +10,7 @@ class CartController extends Controller
     public function index()
     {
         $cart  = session('cart', []);
-        $total = collect($cart)->sum(fn ($item) => $item['price'] * $item['quantity']);
+        $total = collect($cart)->sum(fn ($item) => ($item['price'] ?? 0) * ($item['quantity'] ?? 0));
 
         return view('cart', compact('cart', 'total'));
     }
@@ -19,14 +19,15 @@ class CartController extends Controller
     {
         $qty  = max(1, (int) $request->input('quantity', 1));
         $cart = session('cart', []);
+        $id   = $artwork->artwork_id;
 
-        if (isset($cart[$artwork->id])) {
-            $cart[$artwork->id]['quantity'] += $qty;
+        if (isset($cart[$id])) {
+            $cart[$id]['quantity'] += $qty;
         } else {
-            $cart[$artwork->id] = [
-                'id'       => $artwork->id,
+            $cart[$id] = [
+                'id'       => $id,
                 'title'    => $artwork->title,
-                'artist'   => $artwork->artist,
+                'artist'   => $artwork->artist?->name ?? '',
                 'price'    => (float) $artwork->price,
                 'image'    => $artwork->image,
                 'quantity' => $qty,

@@ -84,20 +84,19 @@
                             <img src="{{ asset('icons/cart.svg') }}" alt=""/>
                         </button>
                     </div>
-                    <div style="width:180px">
-                        <form method="POST" action="{{ route('saved.toggle', $artwork) }}">
-                            @csrf
-                            @php $isSaved = in_array($artwork->id, session('saved', [])); @endphp
-                            <button type="submit" class="sm-icon-btn {{ $isSaved ? 'in-saved' : '' }}"
-                                    title="{{ $isSaved ? 'Remove from saved' : 'Save' }}">
-                                <img src="{{ asset('icons/bookmark.svg') }}" alt=""/>
-                            </button>
-                        </form>
-                    </div>
-
-                    <a class="mid-btn mt-1" style="border-width:2px;width:100px;height:28px"
-                       href="{{ route('artworks') }}">Go back</a>
                 </form>
+
+                <form method="POST" action="{{ route('saved.toggle', $artwork) }}">
+                    @csrf
+                    @php $isSaved = in_array($artwork->artwork_id, session('saved', [])); @endphp
+                    <button type="submit" class="sm-icon-btn {{ $isSaved ? 'in-saved' : '' }}"
+                            title="{{ $isSaved ? 'Remove from saved' : 'Save' }}">
+                        <img src="{{ asset('icons/bookmark.svg') }}" alt=""/>
+                    </button>
+                </form>
+
+                <a class="mid-btn mt-1" style="border-width:2px;width:100px;height:28px"
+                   href="{{ route('artworks') }}">Go back</a>
             </div>
         </div>
 
@@ -109,6 +108,7 @@
 
     </main>
 </div>
+
 @include('footer')
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
