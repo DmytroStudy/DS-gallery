@@ -21,14 +21,12 @@
 
     <main class="p-4 flex-grow-1" style="overflow-y:auto">
 
-        {{-- Success banner --}}
         @if (session('success'))
             <div class="alert alert-success py-3 mb-4" style="font-size:14px">
                 {{ session('success') }}
             </div>
         @endif
 
-        {{-- Confirmation header --}}
         <div class="text-center py-4 mb-4 border rounded-1" style="background:#f9f9f9">
             <div style="font-size:48px;line-height:1">✓</div>
             <h1 class="mt-2 mb-1" style="font-size:26px">Order confirmed!</h1>
@@ -39,7 +37,6 @@
 
         <div class="row g-4">
 
-            {{-- Order items --}}
             <div class="col-12 col-md-7">
                 <h2 style="font-size:16px;font-weight:600;margin-bottom:12px">Items ordered</h2>
 
@@ -75,7 +72,6 @@
                 </div>
             </div>
 
-            {{-- Shipping summary --}}
             <div class="col-12 col-md-5">
                 <h2 style="font-size:16px;font-weight:600;margin-bottom:12px">Shipping to</h2>
                 <div class="border rounded-1 p-3" style="font-size:13px;line-height:2">
@@ -105,7 +101,6 @@
 
         </div>
 
-        {{-- CTA --}}
         <div class="d-flex gap-3 mt-5 pt-4 border-top">
             <a href="{{ route('artworks') }}" class="btn btn-dark px-4">Continue shopping</a>
             <a href="{{ route('home') }}" class="btn btn-outline-secondary px-4">Go to home</a>

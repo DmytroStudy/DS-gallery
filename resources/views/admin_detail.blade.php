@@ -117,7 +117,7 @@
             </div>
         </form>
 
-        <!-- DELETE FORM (separate, NOT nested) -->
+        <!-- DELETE FORM -->
         <div class="border-top pt-3 mt-3">
             <form method="POST" action="{{ route('admin.destroy', $artwork) }}"
                   onsubmit="return confirm('Delete ' + @json($artwork->title) + '?')">
