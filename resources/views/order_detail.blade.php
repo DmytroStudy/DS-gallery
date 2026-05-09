@@ -30,7 +30,7 @@
                 @foreach ($order->items as $item)
                     <div class="d-flex align-items-center gap-3 py-3 border-top">
                         <div class="col-auto">
-                            <img src="{{ asset($item->artwork->image ?? 'icons/img.svg') }}"
+                            <img src="{{ asset($item->product->image ?? 'icons/img.svg') }}"
                                  alt="{{ $item->title }}"
                                  style="width:64px;height:64px;object-fit:cover;border-radius:4px"/>
                         </div>
@@ -76,7 +76,7 @@
         </div>
 
         <div class="d-flex gap-3 mt-5 pt-4 border-top">
-            <a href="{{ route('artworks') }}" class="btn btn-dark px-4">Continue shopping</a>
+            <a href="{{ route('products') }}" class="btn btn-dark px-4">Continue shopping</a>
             <a href="{{ route('home') }}" class="btn btn-outline-secondary px-4">Go to home</a>
         </div>
 

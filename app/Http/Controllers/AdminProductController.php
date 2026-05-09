@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Artwork;
+use App\Models\Product;
 use App\Models\Artist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class AdminArtworkController extends Controller
+class AdminProductController extends Controller
 {
     public function index(Request $request)
     {
-        $category = $request->get('category', 'artwork');
-        $query = Artwork::with('artist')->where('category', $category);
+        $category = $request->get('category', 'product');
+        $query = Product::with('artist')->where('category', $category);
 
         if ($search = $request->get('search')) {
             $query->where(function ($q) use ($search) {
@@ -62,31 +62,31 @@ class AdminArtworkController extends Controller
             default => $query->orderBy('title', 'asc'),
         };
 
-        $artworks = $query->paginate(8)->withQueryString();
+        $products = $query->paginate(8)->withQueryString();
 
-        $genres = Artwork::where('category', $category)
+        $genres = Product::where('category', $category)
             ->whereNotNull('genre')
             ->select('genre')
             ->distinct()
             ->orderBy('genre')
             ->pluck('genre');
 
-        $artists = Artist::whereHas('artworks', function($q) use ($category) {
+        $artists = Artist::whereHas('products', function($q) use ($category) {
             $q->where('category', $category);
         })->orderBy('name')->pluck('name', 'artist_id');
 
-        $minPrice = (int) Artwork::where('category', $category)->min('price');
-        $maxPrice = (int) Artwork::where('category', $category)->max('price');
-        $minYear  = (int) Artwork::where('category', $category)->whereNotNull('year')->min('year');
-        $maxYear  = (int) Artwork::where('category', $category)->whereNotNull('year')->max('year');
+        $minPrice = (int) Product::where('category', $category)->min('price');
+        $maxPrice = (int) Product::where('category', $category)->max('price');
+        $minYear  = (int) Product::where('category', $category)->whereNotNull('year')->min('year');
+        $maxYear  = (int) Product::where('category', $category)->whereNotNull('year')->max('year');
 
-        return view('admin_artworks', compact('artworks', 'genres', 'artists', 'minPrice',
+        return view('admin_products', compact('products', 'genres', 'artists', 'minPrice',
             'maxPrice', 'minYear', 'maxYear', 'category'));
     }
 
     public function create()
     {
-        $genres = Artwork::distinct()->orderBy('genre')->pluck('genre');
+        $genres = Product::distinct()->orderBy('genre')->pluck('genre');
 
         return view('admin_add', compact('genres'));
     }
@@ -98,7 +98,7 @@ class AdminArtworkController extends Controller
             'artist'      => 'required|string|max:255',
             'year'        => 'required|integer|min:1000|max:2100',
             'genre'       => 'required|string|max:100',
-            'category'    => 'required|in:artwork,tool',
+            'category'    => 'required|in:product,tool',
             'price'       => 'required|numeric|min:0',
             'description' => 'nullable|string',
             'image'       => 'nullable|image|max:4096',
@@ -111,27 +111,27 @@ class AdminArtworkController extends Controller
             $data['image'] = 'images/art/van_gogh/Bridges_across_the_Seine_at_Asnieres.jpg';
         }
 
-        Artwork::create($data);
+        Product::create($data);
 
-        return redirect()->route('admin.artworks')
-            ->with('success', 'Artwork created successfully.');
+        return redirect()->route('admin.products')
+            ->with('success', 'Product created successfully.');
     }
 
-    public function edit(Artwork $artwork)
+    public function edit(Product $product)
     {
-        $genres = Artwork::distinct()->orderBy('genre')->pluck('genre');
+        $genres = Product::distinct()->orderBy('genre')->pluck('genre');
 
-        return view('admin_detail', compact('artwork', 'genres'));
+        return view('admin_detail', compact('product', 'genres'));
     }
 
-    public function update(Request $request, Artwork $artwork)
+    public function update(Request $request, Product $product)
     {
         $data = $request->validate([
             'title'       => 'required|string|max:255',
             'artist'      => 'required|string|max:255',
             'year'        => 'required|integer|min:1000|max:2100',
             'genre'       => 'required|string|max:100',
-            'category'    => 'required|in:artwork,tool',
+            'category'    => 'required|in:product,tool',
             'price'       => 'required|numeric|min:0',
             'description' => 'nullable|string',
             'image'       => 'nullable|image|max:4096',
@@ -144,17 +144,17 @@ class AdminArtworkController extends Controller
             unset($data['image']);
         }
 
-        $artwork->update($data);
+        $product->update($data);
 
-        return redirect()->route('admin.artworks')
-            ->with('success', 'Artwork updated successfully.');
+        return redirect()->route('admin.products')
+            ->with('success', 'Product updated successfully.');
     }
 
-    public function destroy(Artwork $artwork)
+    public function destroy(Product $product)
     {
-        $artwork->delete();
+        $product->delete();
 
-        return redirect()->route('admin.artworks')
-            ->with('success', 'Artwork deleted.');
+        return redirect()->route('admin.products')
+            ->with('success', 'Product deleted.');
     }
 }

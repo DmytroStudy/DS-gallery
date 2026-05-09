@@ -2,29 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Artwork;
+use App\Models\Product;
 
 class SavedController extends Controller
 {
     public function index()
     {
         $ids   = session('saved', []);
-        $saved = $ids ? Artwork::whereIn('artwork_id', $ids)->get() : collect();
+        $saved = $ids ? Product::whereIn('product_id', $ids)->get() : collect();
 
         return view('saved', compact('saved'));
     }
 
-    public function toggle(Artwork $artwork)
+    public function toggle(Product $product)
     {
         $saved = session('saved', []);
-        $key   = $artwork->artwork_id;
+        $key   = $product->product_id;
 
         if (in_array($key, $saved)) {
             $saved = array_values(array_filter($saved, fn ($id) => $id !== $key));
-            $msg   = "\"{$artwork->title}\" removed from saved.";
+            $msg   = "\"{$product->title}\" removed from saved.";
         } else {
             $saved[] = $key;
-            $msg     = "\"{$artwork->title}\" saved.";
+            $msg     = "\"{$product->title}\" saved.";
         }
 
         session(['saved' => $saved]);

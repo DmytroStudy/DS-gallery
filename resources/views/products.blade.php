@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>DSgallery: Artworks</title>
+    <title>DSgallery: products</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
 </head>
@@ -18,7 +18,7 @@
     <div class="d-flex flex-grow-1">
 
         <!-- Sort panel -->
-        <form method="GET" action="{{ route('artworks') }}" id="filterForm">
+        <form method="GET" action="{{ route('products') }}" id="filterForm">
             @if(request('search'))
                 <input type="hidden" name="search" value="{{ request('search') }}"/>
             @endif
@@ -51,8 +51,8 @@
                            min="{{ $minPrice }}" max="{{ $maxPrice }}" style="width:80px"/>
                 </div>
 
-                @if($category === 'artwork')
-                    {{-- Artworks: Year, Genre, Artist --}}
+                @if($category === 'product')
+                    {{-- products: Year, Genre, Artist --}}
                     <p class="muted-label">YEAR</p>
                     <div class="d-flex gap-1 mb-2">
                         <input class="form-control form-control-sm" type="number" name="year_min"
@@ -101,7 +101,7 @@
                 @endif
 
                 <button type="submit" class="btn btn-dark btn-sm w-100 mb-1">Apply</button>
-                <a href="{{ route('artworks', ['category' => $category]) }}"
+                <a href="{{ route('products', ['category' => $category]) }}"
                    class="btn btn-outline-secondary btn-sm w-100">Reset</a>
             </div>
         </form>
@@ -109,15 +109,15 @@
         <main class="p-4 flex-grow-1" style="overflow-y:auto">
 
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <h1 class="mb-0">Artworks</h1>
+                <h1 class="mb-0">Products</h1>
             </div>
 
             <div class="d-flex gap-2 mb-4">
-                <a href="{{ route('artworks', array_merge(request()->except(['category','page']), ['category' => 'artwork'])) }}"
-                   class="mid-btn {{ $category === 'artwork' ? 'active' : '' }}">
+                <a href="{{ route('products', array_merge(request()->except(['category','page']), ['category' => 'product'])) }}"
+                   class="mid-btn {{ $category === 'product' ? 'active' : '' }}">
                     Artworks
                 </a>
-                <a href="{{ route('artworks', array_merge(request()->except(['category','page']), ['category' => 'tool'])) }}"
+                <a href="{{ route('products', array_merge(request()->except(['category','page']), ['category' => 'tool'])) }}"
                    class="mid-btn {{ $category === 'tool' ? 'active' : '' }}">
                     Tools
                 </a>
@@ -126,24 +126,24 @@
             @if(request('search'))
                 <p class="text-muted small mb-3">
                     Search: <strong>{{ request('search') }}</strong>
-                    <a href="{{ route('artworks', request()->except('search')) }}" class="ms-2 text-dark">✕ clear</a>
+                    <a href="{{ route('products', request()->except('search')) }}" class="ms-2 text-dark">✕ clear</a>
                 </p>
             @endif
 
-            @if ($artworks->isEmpty())
+            @if ($products->isEmpty())
                 <div class="text-center py-5 text-muted">
-                    <p style="font-size:18px">No artworks found matching your criteria.</p>
-                    <a href="{{ route('artworks') }}" class="btn btn-outline-dark mt-2">Browse all</a>
+                    <p style="font-size:18px">No products found matching your criteria.</p>
+                    <a href="{{ route('products') }}" class="btn btn-outline-dark mt-2">Browse all</a>
                 </div>
             @else
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
-                    @foreach ($artworks as $artwork)
+                    @foreach ($products as $product)
                         <div class="col">
                             <figure class="card p-0 h-100">
-                                <a class="img-card" style="height:300px" href="{{ route('detail', $artwork) }}">
-                                    <img class="art-image" src="{{ asset($artwork->image) }}" alt="{{ $artwork->title }}"/>
+                                <a class="img-card" style="height:300px" href="{{ route('detail', $product) }}">
+                                    <img class="art-image" src="{{ asset($product->image) }}" alt="{{ $product->title }}"/>
                                     <div class="tile-btns">
-                                        <form method="POST" action="{{ route('cart.add', $artwork) }}">
+                                        <form method="POST" action="{{ route('cart.add', $product) }}">
                                             @csrf
                                             <input type="hidden" name="quantity" value="1"/>
                                             <button type="submit" class="sm-icon-btn">
@@ -151,9 +151,9 @@
                                             </button>
                                         </form>
 
-                                        <form method="POST" action="{{ route('saved.toggle', $artwork) }}">
+                                        <form method="POST" action="{{ route('saved.toggle', $product) }}">
                                             @csrf
-                                            @php $isSaved = in_array($artwork->artwork_id, session('saved', [])); @endphp
+                                            @php $isSaved = in_array($product->product_id, session('saved', [])); @endphp
                                             <button type="submit" class="sm-icon-btn {{ $isSaved ? 'in-saved' : '' }}">
                                                 <img src="{{ asset('icons/bookmark.svg') }}" alt=""/>
                                             </button>
@@ -163,19 +163,19 @@
 
                                 <div class="tile-info">
                                     <figcaption class="name">
-                                        {{ $artwork->title }}
-                                        <div class="text-muted small">{{ $artwork->artist?->name }}</div>
+                                        {{ $product->title }}
+                                        <div class="text-muted small">{{ $product->artist?->name }}</div>
                                     </figcaption>
-                                    <div class="price">{{ number_format($artwork->price, 0) }}€</div>
+                                    <div class="price">{{ number_format($product->price, 0) }}€</div>
                                 </div>
                             </figure>
                         </div>
                     @endforeach
                 </div>
 
-                @if ($artworks->hasPages())
+                @if ($products->hasPages())
                     <nav class="paginator d-flex justify-content-center mt-4">
-                        {{ $artworks->links() }}
+                        {{ $products->links() }}
                     </nav>
                 @endif
             @endif

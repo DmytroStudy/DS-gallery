@@ -82,7 +82,7 @@ class OrderController extends Controller
 
         foreach ($cart as $item) {
             $order->items()->create([
-                'artwork_id' => $item['id'],
+                'product_id' => $item['id'],
                 'title'      => $item['title'],
                 'artist'     => $item['artist'],
                 'price'      => $item['price'],

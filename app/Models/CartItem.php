@@ -9,15 +9,15 @@ class CartItem extends Model
     protected $table = 'DS_CartItem';
     protected $primaryKey = 'cart_id';
 
-    protected $fillable = ['user_id', 'artwork_id', 'quantity'];
+    protected $fillable = ['user_id', 'product_id', 'quantity'];
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function artwork()
+    public function product()
     {
-        return $this->belongsTo(Artwork::class, 'artwork_id', 'artwork_id');
+        return $this->belongsTo(Product::class, 'product_id', 'product_id');
     }
 }

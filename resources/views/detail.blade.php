@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>DSgallery: {{ $artwork->title }}</title>
+    <title>DSgallery: {{ $product->title }}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
 </head>
@@ -17,7 +17,7 @@
 
     <main class="p-4 overflow-y-auto flex-grow-1">
 
-        <h1>{{ $artwork->title }}</h1>
+        <h1>{{ $product->title }}</h1>
 
         <div class="row g-4 align-items-start mb-4">
 
@@ -25,39 +25,39 @@
             <div class="col-12 col-md-8">
                 <div class="border rounded-1 overflow-hidden">
                     <div class="img-card" style="height:500px">
-                        <img class="art-image" src="{{ asset($artwork->image) }}"
-                             alt="{{ $artwork->title }}" style="object-fit:contain"/>
+                        <img class="art-image" src="{{ asset($product->image) }}"
+                             alt="{{ $product->title }}" style="object-fit:contain"/>
                     </div>
                 </div>
             </div>
 
             <!-- Meta and add-to-cart -->
             <div class="col-12 col-md-4 d-flex flex-column gap-4 pt-2">
-                @if($artwork->artist)
+                @if($product->artist)
                     <div>
                         <div class="muted-label">ARTIST</div>
-                        <div class="detail-value">{{ $artwork->artist->name }}</div>
+                        <div class="detail-value">{{ $product->artist->name }}</div>
                     </div>
                 @endif
 
-                @if($artwork->year)
+                @if($product->year)
                     <div>
                         <div class="muted-label">DATE</div>
-                        <div class="detail-value">{{ $artwork->year }}</div>
+                        <div class="detail-value">{{ $product->year }}</div>
                     </div>
                 @endif
 
-                @if($artwork->genre)
+                @if($product->genre)
                     <div>
-                        <div class="muted-label">{{ $artwork->category === 'tool' ? 'TYPE' : 'GENRE' }}</div>
-                        <div class="detail-value">{{ $artwork->genre }}</div>
+                        <div class="muted-label">{{ $product->category === 'tool' ? 'TYPE' : 'GENRE' }}</div>
+                        <div class="detail-value">{{ $product->genre }}</div>
                     </div>
                 @endif
 
                 <div>
                     <div class="muted-label">PRICE</div>
                     <div class="detail-value" style="font-size:22px">
-                        {{ number_format($artwork->price, 0) }}€
+                        {{ number_format($product->price, 0) }}€
                     </div>
                 </div>
 
@@ -73,10 +73,10 @@
                     </div>
 
                     {{-- Cart + Saved --}}
-                    @php $isSaved = in_array($artwork->artwork_id, session('saved', [])); @endphp
+                    @php $isSaved = in_array($product->product_id, session('saved', [])); @endphp
                     <div class="d-flex gap-2" style="width: 104px;">
 
-                        <form method="POST" action="{{ route('cart.add', $artwork) }}" style="flex: 1;">
+                        <form method="POST" action="{{ route('cart.add', $product) }}" style="flex: 1;">
                             @csrf
                             <input id="detail-qty" name="quantity" type="hidden" value="1"/>
                             <button type="submit" class="sm-icon-btn" style="width: 100%;">
@@ -84,7 +84,7 @@
                             </button>
                         </form>
 
-                        <form method="POST" action="{{ route('saved.toggle', $artwork) }}" style="flex: 1;">
+                        <form method="POST" action="{{ route('saved.toggle', $product) }}" style="flex: 1;">
                             @csrf
                             <button type="submit" class="sm-icon-btn {{ $isSaved ? 'in-saved' : '' }}" style="width: 100%;">
                                 <img src="{{ asset('icons/bookmark.svg') }}" alt="Save"/>
@@ -96,16 +96,16 @@
                     {{-- Go back --}}
                     <div class="d-flex">
                         <a class="mid-btn" style="border-width:2px; width: 104px; height: 28px;"
-                           href="{{ route('artworks') }}">Go back</a>
+                           href="{{ route('products') }}">Go back</a>
                     </div>
 
                 </div>
             </div>
         </div>
 
-        @if ($artwork->description)
+        @if ($product->description)
             <p style="font-size:18px;color:var(--muted);padding-top:24px">
-                {{ $artwork->description }}
+                {{ $product->description }}
             </p>
         @endif
 

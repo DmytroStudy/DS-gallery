@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call([
-            ArtworkSeeder::class,
+            ProductSeeder::class,
         ]);
     }
 }

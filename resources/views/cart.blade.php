@@ -21,7 +21,7 @@
         @if (empty($cart))
             <div class="text-center py-5 text-muted">
                 <p style="font-size:18px">Your cart is empty.</p>
-                <a href="{{ route('artworks') }}" class="btn btn-dark mt-2">Browse artworks</a>
+                <a href="{{ route('products') }}" class="btn btn-dark mt-2">Browse products</a>
             </div>
         @else
 

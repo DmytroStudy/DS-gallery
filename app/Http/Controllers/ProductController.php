@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Artwork;
+use App\Models\Product;
 use App\Models\Artist;
 use Illuminate\Http\Request;
 
-class ArtworkController extends Controller
+class ProductController extends Controller
 {
     public function index(Request $request)
     {
-        $category = $request->get('category', 'artwork');
-        $query = Artwork::with('artist')->where('category', $category);
+        $category = $request->get('category', 'product');
+        $query = Product::with('artist')->where('category', $category);
 
         if ($search = $request->get('search')) {
             $query->where(function ($q) use ($search) {
@@ -61,30 +61,30 @@ class ArtworkController extends Controller
             default => $query->orderBy('title', 'asc'),
         };
 
-        $artworks = $query->paginate(9)->withQueryString();
+        $products = $query->paginate(9)->withQueryString();
 
-        $genres = Artwork::where('category', $category)
+        $genres = Product::where('category', $category)
             ->whereNotNull('genre')
             ->select('genre')
             ->distinct()
             ->orderBy('genre')
             ->pluck('genre');
 
-        $artists = Artist::whereHas('artworks', function($q) use ($category) {
+        $artists = Artist::whereHas('products', function($q) use ($category) {
             $q->where('category', $category);
         })->orderBy('name')->pluck('name', 'artist_id');
 
-        $minPrice = (int) Artwork::where('category', $category)->min('price');
-        $maxPrice = (int) Artwork::where('category', $category)->max('price');
-        $minYear  = (int) Artwork::where('category', $category)->whereNotNull('year')->min('year');
-        $maxYear  = (int) Artwork::where('category', $category)->whereNotNull('year')->max('year');
+        $minPrice = (int) Product::where('category', $category)->min('price');
+        $maxPrice = (int) Product::where('category', $category)->max('price');
+        $minYear  = (int) Product::where('category', $category)->whereNotNull('year')->min('year');
+        $maxYear  = (int) Product::where('category', $category)->whereNotNull('year')->max('year');
 
-        return view('artworks', compact('artworks', 'genres', 'artists', 'minPrice',
+        return view('products', compact('products', 'genres', 'artists', 'minPrice',
             'maxPrice', 'minYear', 'maxYear', 'category'));
     }
 
-    public function show(Artwork $artwork)
+    public function show(Product $product)
     {
-        return view('detail', compact('artwork'));
+        return view('detail', compact('product'));
     }
 }

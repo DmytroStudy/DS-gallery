@@ -25,18 +25,27 @@
                         Jeff Koons's Giant Play-Doh Sculpture Could Fetch 20€ Million at Christie's.
                     </h2>
                     <p style="font-size:16px;line-height:1.75">
-                        When the Whitney Museum of American Art staged its blockbuster retrospective of Jeff Koons in 2014, the most photographed work was undeniably Play-Doh (1994–2014), an 11-foot-tall aluminum sculpture that looked as if an artistic young giant had created a multicolored pile of clay and then left it behind.<br><br>
-                        Now, a version of that candy-hued work is heading to auction. Christie's will offer an edition of Play-Doh at its evening sale of postwar and contemporary art in New York on May 17. The work, consigned from a European collection, is expected to sell for a price "in the region of 20€ million."<br><br>
-                        By the time Koons finally revealed Play-Doh to the public in his Whitney retrospective, it was already the stuff of legend. The work took around two decades to produce as the notoriously perfectionist Koons fiddled with the medium and refined the production process.
+                        When the Whitney Museum of American Art staged its blockbuster retrospective of Jeff Koons in
+                        2014, the most photographed work was undeniably Play-Doh (1994–2014), an 11-foot-tall aluminum
+                        sculpture that looked as if an artistic young giant had created a multicolored pile of clay and
+                        then left it behind.<br><br>
+                        Now, a version of that candy-hued work is heading to auction. Christie's will offer an edition
+                        of Play-Doh at its evening sale of postwar and contemporary art in New York on May 17. The work,
+                        consigned from a European collection, is expected to sell for a price "in the region of 20€
+                        million."<br><br>
+                        By the time Koons finally revealed Play-Doh to the public in his Whitney retrospective, it was
+                        already the stuff of legend. The work took around two decades to produce as the notoriously
+                        perfectionist Koons fiddled with the medium and refined the production process.
                     </p>
                 </div>
-                <div class="img-card news-img"><img class="art-image" src="{{ asset('images/home/news.jpg') }}" alt=""/></div>
+                <div class="img-card news-img"><img class="art-image" src="{{ asset('images/home/news.jpg') }}" alt=""/>
+                </div>
             </article>
         </section>
 
         <section class="mb-5">
-            <h1>Artwork of the day</h1>
-            <a class="day-wrap" href="{{ route('artworks') }}">
+            <h1>product of the day</h1>
+            <a class="day-wrap" href="{{ route('products') }}">
                 <img src="{{ asset('images/home/Girl_with_a_Pearl_Earring.jpg') }}" alt="Girl with a Pearl Earring"/>
             </a>
         </section>
@@ -45,25 +54,27 @@
             <h1>New Arrivals</h1>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
                 @php
-                    $newArrivals = \App\Models\Artwork::latest()->take(3)->get();
+                    $newArrivals = \App\Models\Product::latest()->take(3)->get();
                 @endphp
-                @foreach ($newArrivals as $artwork)
+                @foreach ($newArrivals as $product)
                     <div class="col">
                         <figure class="card p-0">
-                            <a class="img-card" style="height:300px" href="{{ route('detail', $artwork) }}">
-                                <img class="art-image" src="{{ asset($artwork->image) }}" alt="{{ $artwork->title }}"/>
+                            <a class="img-card" style="height:300px" href="{{ route('detail', $product) }}">
+                                <img class="art-image" src="{{ asset($product->image) }}" alt="{{ $product->title }}"/>
                                 <div class="tile-btns">
-                                    <form method="POST" action="{{ route('cart.add', $artwork) }}">
+                                    <form method="POST" action="{{ route('cart.add', $product) }}">
                                         @csrf
                                         <input type="hidden" name="quantity" value="1"/>
-                                        <button type="submit" class="sm-icon-btn"><img src="{{ asset('icons/cart.svg') }}" alt=""/></button>
+                                        <button type="submit" class="sm-icon-btn"><img
+                                                    src="{{ asset('icons/cart.svg') }}" alt=""/></button>
                                     </form>
-                                    <button class="sm-icon-btn"><img src="{{ asset('icons/bookmark.svg') }}" alt=""/></button>
+                                    <button class="sm-icon-btn"><img src="{{ asset('icons/bookmark.svg') }}" alt=""/>
+                                    </button>
                                 </div>
                             </a>
                             <div class="tile-info">
-                                <figcaption class="name">{{ $artwork->title }}</figcaption>
-                                <div class="price">{{ number_format($artwork->price, 0) }}€</div>
+                                <figcaption class="name">{{ $product->title }}</figcaption>
+                                <div class="price">{{ number_format($product->price, 0) }}€</div>
                             </div>
                         </figure>
                     </div>
@@ -78,7 +89,10 @@
                 <article class="border-top py-4">
                     <div class="row g-4">
                         <div class="col-12 col-md-7">
-                            <p style="font-size:18px">Vincent van Gogh (1853–1890) — a Dutch Post-Impressionist painter whose work marked a dramatic shift toward emotional expression and individuality in art, developing a highly distinctive style characterized by bold, vibrant colors and thick brushstrokes.</p>
+                            <p style="font-size:18px">Vincent van Gogh (1853–1890) — a Dutch Post-Impressionist painter
+                                whose work marked a dramatic shift toward emotional expression and individuality in art,
+                                developing a highly distinctive style characterized by bold, vibrant colors and thick
+                                brushstrokes.</p>
                         </div>
                         <div class="col-12 col-md-5">
                             <div class="img-card" style="height:350px">
@@ -91,7 +105,9 @@
                 <article class="border-top py-4">
                     <div class="row g-4">
                         <div class="col-12 col-md-7">
-                            <p style="font-size:18px">Pablo Picasso (1881–1973) — a Spanish painter, sculptor, and one of the most influential artists of the 20th century, known for co-founding Cubism and masterpieces like "Guernica".</p>
+                            <p style="font-size:18px">Pablo Picasso (1881–1973) — a Spanish painter, sculptor, and one
+                                of the most influential artists of the 20th century, known for co-founding Cubism and
+                                masterpieces like "Guernica".</p>
                         </div>
                         <div class="col-12 col-md-5">
                             <div class="img-card" style="height:350px">
@@ -104,7 +120,9 @@
                 <article class="border-top py-4">
                     <div class="row g-4">
                         <div class="col-12 col-md-7">
-                            <p style="font-size:18px">Raphael (1483–1520) — an Italian painter and architect of the High Renaissance, widely regarded as one of the greatest artists in European history, known for "The School of Athens".</p>
+                            <p style="font-size:18px">Raphael (1483–1520) — an Italian painter and architect of the High
+                                Renaissance, widely regarded as one of the greatest artists in European history, known
+                                for "The School of Athens".</p>
                         </div>
                         <div class="col-12 col-md-5">
                             <div class="img-card" style="height:350px">

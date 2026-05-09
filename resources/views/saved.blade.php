@@ -19,19 +19,19 @@
 
         @if ($saved->isEmpty())
             <div class="text-center py-5 text-muted">
-                <p style="font-size:18px">No saved artworks yet.</p>
-                <a href="{{ route('artworks') }}" class="btn btn-dark mt-2">Browse artworks</a>
+                <p style="font-size:18px">No saved products yet.</p>
+                <a href="{{ route('products') }}" class="btn btn-dark mt-2">Browse products</a>
             </div>
         @else
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
-                @foreach ($saved as $artwork)
+                @foreach ($saved as $product)
                     <div class="col">
                         <figure class="card p-0 h-100">
-                            <a class="img-card tile-img" href="{{ route('detail', $artwork) }}">
-                                <img class="art-image" src="{{ asset($artwork->image) }}" alt="{{ $artwork->title }}"/>
+                            <a class="img-card tile-img" href="{{ route('detail', $product) }}">
+                                <img class="art-image" src="{{ asset($product->image) }}" alt="{{ $product->title }}"/>
                                 <div class="tile-btns">
                                     {{-- Add to cart --}}
-                                    <form method="POST" action="{{ route('cart.add', $artwork) }}">
+                                    <form method="POST" action="{{ route('cart.add', $product) }}">
                                         @csrf
                                         <input type="hidden" name="quantity" value="1"/>
                                         <button type="submit" class="sm-icon-btn" title="Add to cart">
@@ -39,7 +39,7 @@
                                         </button>
                                     </form>
                                     {{-- Remove from saved --}}
-                                    <form method="POST" action="{{ route('saved.toggle', $artwork) }}">
+                                    <form method="POST" action="{{ route('saved.toggle', $product) }}">
                                         @csrf
                                         <button type="submit" class="sm-icon-btn in-saved" title="Remove from saved">
                                             <img src="{{ asset('icons/bookmark.svg') }}" alt=""/>
@@ -48,8 +48,8 @@
                                 </div>
                             </a>
                             <div class="tile-info">
-                                <figcaption class="name">{{ $artwork->title }}</figcaption>
-                                <div class="price">{{ number_format($artwork->price, 0) }}€</div>
+                                <figcaption class="name">{{ $product->title }}</figcaption>
+                                <div class="price">{{ number_format($product->price, 0) }}€</div>
                             </div>
                         </figure>
                     </div>

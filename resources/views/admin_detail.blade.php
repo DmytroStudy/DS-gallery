@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>DSgallery: Admin — Edit {{ $artwork->title }}</title>
+    <title>DSgallery: Admin — Edit {{ $product->title }}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
 </head>
@@ -28,7 +28,7 @@
         @endif
 
         <!-- UPDATE FORM -->
-        <form method="POST" action="{{ route('admin.update', $artwork) }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('admin.update', $product) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -38,8 +38,8 @@
                 <div class="col-12 col-md-8">
                     <label class="img-upload w-100" style="cursor:pointer;border:none;background:none">
                         <img id="imagePreview"
-                             src="{{ asset($artwork->image) }}"
-                             alt="{{ $artwork->title }}"
+                             src="{{ asset($product->image) }}"
+                             alt="{{ $product->title }}"
                              style="width:100%;height:505px;object-fit:contain"/>
                         <input type="file" name="image" accept="image/*" style="display:none"
                                onchange="previewImg(this)"/>
@@ -55,19 +55,19 @@
                     <div>
                         <div class="muted-label mb-1">TITLE</div>
                         <input class="edit-input" type="text" name="title"
-                               value="{{ old('title', $artwork->title) }}" required/>
+                               value="{{ old('title', $product->title) }}" required/>
                     </div>
 
                     <div>
                         <div class="muted-label mb-1">ARTIST</div>
                         <input class="edit-input" type="text" name="artist"
-                               value="{{ old('artist', $artwork->artist) }}" required/>
+                               value="{{ old('artist', $product->artist) }}" required/>
                     </div>
 
                     <div>
                         <div class="muted-label mb-1">DATE</div>
                         <input class="edit-input" type="number" name="year"
-                               value="{{ old('year', $artwork->year) }}"
+                               value="{{ old('year', $product->year) }}"
                                min="1000" max="2100" required/>
                     </div>
 
@@ -75,7 +75,7 @@
                         <div class="muted-label mb-1">GENRE</div>
                         <input class="edit-input" type="text" name="genre"
                                list="genreList"
-                               value="{{ old('genre', $artwork->genre) }}" required/>
+                               value="{{ old('genre', $product->genre) }}" required/>
                         <datalist id="genreList">
                             @foreach ($genres as $g)
                                 <option value="{{ $g }}">
@@ -85,7 +85,7 @@
 
                     <div>
                         <select class="edit-input" name="category" style="cursor:pointer">
-                            <option value="artwork" selected>Artwork</option>
+                            <option value="product" selected>product</option>
                             <option value="tool">Tool</option>
                         </select>
                     </div>
@@ -93,18 +93,18 @@
                     <div>
                         <div class="muted-label mb-1">PRICE (€)</div>
                         <input class="edit-input" type="number" name="price" step="0.01"
-                            value="{{ old('price', $artwork->price) }}" min="0" required/>
+                            value="{{ old('price', $product->price) }}" min="0" required/>
                     </div>
 
                     <div>
                         <div class="muted-label mb-1">DESCRIPTION</div>
                         <textarea class="edit-input" name="description" rows="4" style="resize:vertical">
-                            {{ old('description', $artwork->description) }}
+                            {{ old('description', $product->description) }}
                         </textarea>
                     </div>
 
                     <div class="border-top pt-3 d-flex gap-2">
-                        <a class="mid-btn" href="{{ route('admin.artworks') }}">Cancel</a>
+                        <a class="mid-btn" href="{{ route('admin.products') }}">Cancel</a>
                         <button type="submit" class="btn btn-dark btn-sm flex-grow-1">
                             Save changes
                         </button>
@@ -116,13 +116,13 @@
 
         <!-- DELETE FORM -->
         <div class="border-top pt-3 mt-3">
-            <form method="POST" action="{{ route('admin.destroy', $artwork) }}"
-                  onsubmit="return confirm('Delete ' + @json($artwork->title) + '?')">
+            <form method="POST" action="{{ route('admin.destroy', $product) }}"
+                  onsubmit="return confirm('Delete ' + @json($product->title) + '?')">
                 @csrf
                 @method('DELETE')
 
                 <button type="submit" class="btn btn-outline-danger btn-sm w-100">
-                    Delete artwork
+                    Delete product
                 </button>
             </form>
         </div>

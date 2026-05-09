@@ -3,10 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\Artist;
-use App\Models\Artwork;
+use App\Models\Product;
 use Illuminate\Database\Seeder;
 
-class ArtworkSeeder extends Seeder
+class ProductSeeder extends Seeder
 {
     public function run(): void
     {
@@ -22,7 +22,7 @@ class ArtworkSeeder extends Seeder
             'name' => 'Raphael'
         ]);
 
-        $artworks = [
+        $products = [
             // VAN GOGH
             [
                 'title' => 'Bridges Across the Seine at Asnières',
@@ -453,8 +453,8 @@ class ArtworkSeeder extends Seeder
             ],
         ];
 
-        foreach ($artworks as $artwork) {
-            Artwork::create($artwork);
+        foreach ($products as $product) {
+            Product::create($product);
         }
 
         // TOOLS
@@ -562,7 +562,7 @@ class ArtworkSeeder extends Seeder
         ];
 
         foreach ($tools as $tool) {
-            Artwork::create($tool);
+            Product::create($tool);
         }
     }
 }

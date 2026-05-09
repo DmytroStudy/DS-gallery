@@ -10,10 +10,10 @@
 
     <div class="d-flex align-items-center gap-2">
 
-        <form method="GET" action="{{ route('artworks') }}" class="d-flex align-items-center">
+        <form method="GET" action="{{ route('products') }}" class="d-flex align-items-center">
             <div class="search-wrap">
                 <input type="text" name="search" placeholder="Search…"
-                       value="{{ request()->routeIs('artworks') ? request('search') : '' }}"/>
+                       value="{{ request()->routeIs('products') ? request('search') : '' }}"/>
                 <img class="icon-search" src="{{ asset('icons/search.svg') }}" alt=""/>
             </div>
         </form>

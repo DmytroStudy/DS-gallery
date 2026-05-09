@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Artwork;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -15,21 +15,21 @@ class CartController extends Controller
         return view('cart', compact('cart', 'total'));
     }
 
-    public function add(Request $request, Artwork $artwork)
+    public function add(Request $request, Product $product)
     {
         $qty  = max(1, (int) $request->input('quantity', 1));
         $cart = session('cart', []);
-        $id   = $artwork->artwork_id;
+        $id   = $product->product_id;
 
         if (isset($cart[$id])) {
             $cart[$id]['quantity'] += $qty;
         } else {
             $cart[$id] = [
                 'id'       => $id,
-                'title'    => $artwork->title,
-                'artist'   => $artwork->artist?->name ?? '',
-                'price'    => (float) $artwork->price,
-                'image'    => $artwork->image,
+                'title'    => $product->title,
+                'artist'   => $product->artist?->name ?? '',
+                'price'    => (float) $product->price,
+                'image'    => $product->image,
                 'quantity' => $qty,
             ];
         }

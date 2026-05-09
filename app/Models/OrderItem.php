@@ -11,7 +11,7 @@ class OrderItem extends Model
 
     protected $fillable = [
         'order_id',
-        'artwork_id',
+        'product_id',
         'quantity',
         'title',
         'artist',
@@ -23,8 +23,8 @@ class OrderItem extends Model
         return $this->belongsTo(Order::class, 'order_id', 'order_id');
     }
 
-    public function artwork()
+    public function product()
     {
-        return $this->belongsTo(Artwork::class, 'artwork_id', 'artwork_id');
+        return $this->belongsTo(Product::class, 'product_id', 'product_id');
     }
 }

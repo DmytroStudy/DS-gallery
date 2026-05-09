@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>DSgallery: Admin — Add Artwork</title>
+    <title>DSgallery: Admin — Add product</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
 </head>
@@ -76,10 +76,10 @@
                     <div>
                         <div class="muted-label mb-1">CATEGORY</div>
                         <select class="edit-input" name="category" style="cursor:pointer">
-                            <option value="artwork" {{ old('category', $artwork->category ?? 'artwork') === 'artwork' ? 'selected' : '' }}>
-                                Artwork
+                            <option value="product" {{ old('category', $product->category ?? 'product') === 'product' ? 'selected' : '' }}>
+                                product
                             </option>
-                            <option value="tool" {{ old('category', $artwork->category ?? '') === 'tool' ? 'selected' : '' }}>
+                            <option value="tool" {{ old('category', $product->category ?? '') === 'tool' ? 'selected' : '' }}>
                                 Tool
                             </option>
                         </select>
@@ -95,12 +95,12 @@
                         <div class="muted-label mb-1">DESCRIPTION</div>
                         <textarea class="edit-input" name="description" rows="4"
                                   style="resize:vertical"
-                                  placeholder="Description of the artwork…">{{ old('description') }}</textarea>
+                                  placeholder="Description of the product…">{{ old('description') }}</textarea>
                     </div>
 
                     <div class="border-top pt-3 d-flex gap-2">
-                        <a class="mid-btn" href="{{ route('admin.artworks') }}">Cancel</a>
-                        <button type="submit" class="btn btn-dark btn-sm flex-grow-1">Save artwork</button>
+                        <a class="mid-btn" href="{{ route('admin.products') }}">Cancel</a>
+                        <button type="submit" class="btn btn-dark btn-sm flex-grow-1">Save product</button>
                     </div>
 
                 </div>

@@ -2,9 +2,8 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AdminAuthController;
-use App\Http\Controllers\AdminArtworkController;
-use App\Http\Controllers\AdminOrderController;
-use App\Http\Controllers\ArtworkController;
+use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
@@ -15,17 +14,17 @@ use Illuminate\Support\Facades\Route;
 // Home
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-//Artworks
-Route::get('/artworks', [ArtworkController::class, 'index'])->name('artworks');
-Route::get('/artworks/{artwork}', [ArtworkController::class, 'show'])->name('detail');
+//Products
+Route::get('/products', [ProductController::class, 'index'])->name('products');
+Route::get('/products/{product}', [ProductController::class, 'show'])->name('detail');
 
 // Saved / Wishlist
 Route::get('/saved', [SavedController::class, 'index'])->name('saved');
-Route::post('/saved/{artwork}/toggle', [SavedController::class, 'toggle'])->name('saved.toggle');
+Route::post('/saved/{product}/toggle', [SavedController::class, 'toggle'])->name('saved.toggle');
 
 // Cart
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
-Route::post('/cart/{artwork}/add', [CartController::class, 'add'])->name('cart.add');
+Route::post('/cart/{product}/add', [CartController::class, 'add'])->name('cart.add');
 Route::post('/cart/{id}/update', [CartController::class, 'update'])->name('cart.update');
 Route::delete('/cart/{id}/remove', [CartController::class, 'remove'])->name('cart.remove');
 Route::post('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
@@ -55,16 +54,11 @@ Route::middleware('auth')->group(function () {
 // Admin panel
 Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
 
-    // Artworks CRUD
-    Route::get('/artworks', [AdminArtworkController::class, 'index'])->name('artworks');
-    Route::get('/artworks/create', [AdminArtworkController::class, 'create'])->name('add');
-    Route::post('/artworks', [AdminArtworkController::class, 'store'])->name('store');
-    Route::get('/artworks/{artwork}', [AdminArtworkController::class, 'edit'])->name('detail');
-    Route::put('/artworks/{artwork}', [AdminArtworkController::class, 'update'])->name('update');
-    Route::delete('/artworks/{artwork}', [AdminArtworkController::class, 'destroy'])->name('destroy');
-
-    // Orders management
-    Route::get('/orders', [AdminOrderController::class, 'index'])->name('orders');
-    Route::get('/orders/{order}', [AdminOrderController::class, 'show'])->name('orders.show');
-    Route::put('/orders/{order}/status', [AdminOrderController::class, 'updateStatus'])->name('orders.status');
+    // Products CRUD
+    Route::get('/products', [AdminProductController::class, 'index'])->name('products');
+    Route::get('/products/create', [AdminProductController::class, 'create'])->name('add');
+    Route::post('/products', [AdminProductController::class, 'store'])->name('store');
+    Route::get('/products/{product}', [AdminProductController::class, 'edit'])->name('detail');
+    Route::put('/products/{product}', [AdminProductController::class, 'update'])->name('update');
+    Route::delete('/products/{product}', [AdminProductController::class, 'destroy'])->name('destroy');
 });

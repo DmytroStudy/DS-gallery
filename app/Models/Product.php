@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Artwork extends Model
+class Product extends Model
 {
-    protected $table = 'DS_Artworks';
-    protected $primaryKey = 'artwork_id';
+    protected $table = 'DS_Products';
+    protected $primaryKey = 'product_id';
 
     protected $fillable = [
         'title',
@@ -27,16 +27,16 @@ class Artwork extends Model
 
     public function cartItems()
     {
-        return $this->hasMany(CartItem::class, 'artwork_id', 'artwork_id');
+        return $this->hasMany(CartItem::class, 'product_id', 'product_id');
     }
 
     public function savedItems()
     {
-        return $this->hasMany(SaveItem::class, 'artwork_id', 'artwork_id');
+        return $this->hasMany(SaveItem::class, 'product_id', 'product_id');
     }
 
     public function orderItems()
     {
-        return $this->hasMany(OrderItem::class, 'artwork_id', 'artwork_id');
+        return $this->hasMany(OrderItem::class, 'product_id', 'product_id');
     }
 }

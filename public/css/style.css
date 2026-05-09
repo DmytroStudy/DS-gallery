@@ -180,7 +180,7 @@ img.art-image {
     gap: 30px; }
 .news-img { max-height: 400px; }
 
-/* Artwork of the day */
+/* Product of the day */
 .day-wrap {
     display: block;
     border: 1px solid var(--border);
@@ -196,7 +196,7 @@ img.art-image {
     object-fit: cover;
 }
 
-/* Artwork tile */
+/* Product tile */
 .tile-img { display: block; height: 300px; }
 .tile-info { padding: 8px 10px; }
 .tile-info .name { font-size: 13px; color: #555}
@@ -208,7 +208,7 @@ img.art-image {
     display: flex;
     gap: 6px; }
 
-/* Details of artwork */
+/* Details of product */
 .muted-label {
     font-size: 10.5px;
     letter-spacing: 1px;
@@ -216,7 +216,7 @@ img.art-image {
 }
 .detail-value { font-size: 14px; }
 
-/* Pagination of artworks */
+/* Pagination of products */
 .pagination .page-link {
     color: var(--fg);
 }
@@ -260,7 +260,7 @@ img.art-image {
     accent-color: var(--fg);
 }
 
-/* Add artwork card */
+/* Add product card */
 .add-card {
     border: 2px dashed var(--border);
     border-radius: 8px;
