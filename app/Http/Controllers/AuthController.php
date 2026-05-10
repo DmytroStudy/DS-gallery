@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Route;
 
 class AuthController extends Controller
 {
@@ -75,6 +76,12 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             $this->mergeCartOnLogin();
+
+            // Redirect query param from checkout pages
+            $redirectParam = $request->query('redirect');
+            if ($redirectParam && Route::has($redirectParam)) {
+                return redirect()->route($redirectParam);
+            }
             return redirect()->intended('/');
         }
 

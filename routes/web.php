@@ -36,6 +36,9 @@ Route::get('/cart/payment', [OrderController::class, 'payment'])->name('orders.p
 Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
 Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
 
+// Guest
+Route::post('/orders/{order}/claim', [OrderController::class, 'claimOrder'])->name('orders.claim');
+
 // Auth
 Route::get('/login',[AuthController::class, 'showLogin'])->name('login');
 Route::post('/login',[AuthController::class, 'login']);
@@ -50,11 +53,8 @@ Route::middleware('auth')->group(function () {
     Route::put('/account/password', [AccountController::class, 'updatePassword'])->name('account.password');
 });
 
-
 // Admin panel
 Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
-
-    // Products CRUD
     Route::get('/products', [AdminProductController::class, 'index'])->name('products');
     Route::get('/products/create', [AdminProductController::class, 'create'])->name('add');
     Route::post('/products', [AdminProductController::class, 'store'])->name('store');

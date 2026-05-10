@@ -35,10 +35,11 @@ return new class extends Migration {
         // 3. Orders (depends on users)
         Schema::create('DS_Orders', function (Blueprint $table) {
             $table->id('order_id');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('status')->default('pending');
             $table->unsignedInteger('total')->default(0);
             $table->string('payment_method')->nullable();
+
             // Shipping snapshot
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
@@ -51,8 +52,10 @@ return new class extends Migration {
             $table->string('address2')->nullable();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('DS_Users')->cascadeOnDelete();
+            $table->foreign('user_id')->references('id')->on('DS_Users')->nullOnDelete();
+            $table->string('view_token')->nullable()->unique();
         });
+
 
         // 4. Order items (depends on orders + products)
         Schema::create('DS_OrderItems', function (Blueprint $table) {
@@ -110,6 +113,8 @@ return new class extends Migration {
 
     public function down(): void
     {
+        Schema::disableForeignKeyConstraints();
+
         Schema::dropIfExists('DS_ProductImages');
         Schema::dropIfExists('DS_SaveItems');
         Schema::dropIfExists('DS_CartItems');
@@ -117,5 +122,7 @@ return new class extends Migration {
         Schema::dropIfExists('DS_Orders');
         Schema::dropIfExists('DS_Products');
         Schema::dropIfExists('DS_Artists');
+
+        Schema::enableForeignKeyConstraints();
     }
 };

@@ -19,6 +19,14 @@
         <div style="width:100%;max-width:500px">
             <h1 class="mb-3">Shipping information</h1>
 
+            {{-- Guest login --}}
+            @guest
+            <div class="border rounded-1 p-3 mb-4" style="background:#f9f9f9;font-size:13px">
+                Already have an account?
+                <a href="{{ route('login') }}?redirect=cart.shipping" class="fw-semibold text-dark">Log in</a>
+            </div>
+            @endguest
+
             <form method="POST" action="{{ route('cart.shipping.process') }}" novalidate>
                 @csrf
                 @include('error')
@@ -27,12 +35,12 @@
                     <div class="col-6">
                         <label class="form-label small fw-semibold">First Name</label>
                         <input class="form-control" type="text" name="first_name"
-                               placeholder="Willem" value="{{ old('first_name') }}" />
+                               placeholder="Willem" value="{{ old('first_name', Auth::user()?->first_name) }}" />
                     </div>
                     <div class="col-6">
                         <label class="form-label small fw-semibold">Last Name</label>
                         <input class="form-control" type="text" name="last_name"
-                               placeholder="Dafoe" value="{{ old('last_name') }}" />
+                               placeholder="Dafoe" value="{{ old('last_name', Auth::user()?->last_name) }}" />
                     </div>
                 </div>
 

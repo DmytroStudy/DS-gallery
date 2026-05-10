@@ -19,6 +19,14 @@
         <div style="width:100%;max-width:500px">
             <h1>Payment details</h1>
 
+            {{-- Guest sign-in nudge on payment step --}}
+            @guest
+            <div class="border rounded-1 p-3 mb-4" style="background:#f9f9f9;font-size:13px">
+                <span class="text-muted">Checking out as guest.</span>
+                <a href="{{ route('login') }}?redirect=orders.payment" class="fw-semibold text-dark ms-1">Log in</a>
+            </div>
+            @endguest
+
             <form method="POST" action="{{ route('orders.store') }}" novalidate>
                 @csrf
 
