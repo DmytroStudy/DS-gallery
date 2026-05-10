@@ -155,7 +155,7 @@ class AdminProductController extends Controller
 
         // Delete selected images
         if ($request->filled('remove_images')) {
-            ProductImage::whereIn('image_id', $request->remove_images)->delete();
+            ProductImage::whereIn('product_image_id', $request->remove_images)->delete();
         }
 
         // Upload new images

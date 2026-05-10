@@ -98,7 +98,7 @@ return new class extends Migration {
 
         // 7. Product images (depends on products)
         Schema::create('DS_ProductImages', function (Blueprint $table) {
-            $table->id('image_id');
+            $table->id('product_image_id');
             $table->unsignedBigInteger('product_id');
             $table->string('img_path');
             $table->integer('order')->default(0);
