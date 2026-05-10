@@ -54,11 +54,13 @@
 
                     <div>
                         <div class="muted-label mb-1">GENRE</div>
-                            <input class="edit-input" type="text" name="genre"
-                               list="genreList" placeholder="Impressionism" value="{{ old('genre') }}" />
-                        <datalist id="genreList">
-                            @foreach ($genres as $g)<option value="{{ $g }}">@endforeach
-                        </datalist>
+                        <select class="edit-input" name="genre" style="cursor:pointer">
+                            @foreach ($genres as $g)
+                                <option value="{{ $g->genre }}" {{ old('genre') == $g->genre ? 'selected' : '' }}>
+                                    {{ $g->genre }}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <div>

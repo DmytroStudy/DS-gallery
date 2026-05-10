@@ -86,8 +86,7 @@ class AdminProductController extends Controller
 
     public function create()
     {
-        $genres = Product::distinct()->orderBy('genre')->pluck('genre');
-
+        $genres = Product::whereNotNull('genre')->select('genre', 'category')->distinct()->orderBy('category', 'asc')->orderBy('genre', 'asc')->get();
         return view('admin_add', compact('genres'));
     }
 
@@ -182,7 +181,7 @@ class AdminProductController extends Controller
     public function edit(Product $product)
     {
         $product->load('images');
-        $genres = Product::distinct()->whereNotNull('genre')->orderBy('genre')->pluck('genre');
+        $genres = Product::whereNotNull('genre')->select('genre', 'category')->distinct()->orderBy('category', 'asc')->orderBy('genre', 'asc')->get();
 
         return view('admin_detail', compact('product', 'genres'));
     }

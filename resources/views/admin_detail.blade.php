@@ -51,9 +51,6 @@
                         <div class="border rounded p-4 text-center" style="border-style: dashed !important;">
                             <div class="muted-label mb-2">ADD NEW IMAGES</div>
                             <input type="file" name="new_images[]" class="form-control form-control-sm" multiple accept="image/*">
-                            <p class="text-muted mt-2" style="font-size:12px">
-                                You can select multiple files at once
-                            </p>
                         </div>
                     </div>
 
@@ -82,17 +79,17 @@
 
                         <div>
                             <div class="muted-label mb-1">GENRE</div>
-                            <input class="edit-input" type="text" name="genre"
-                                   list="genreList"
-                                   value="{{ old('genre', $product->genre) }}" />
-                            <datalist id="genreList">
+                            <select class="edit-input" name="genre" style="cursor:pointer">
                                 @foreach ($genres as $g)
-                                    <option value="{{ $g }}">
+                                    <option value="{{ $g->genre }}" {{ old('genre') == $g->genre ? 'selected' : '' }}>
+                                        {{ $g->genre }}
+                                    </option>
                                 @endforeach
-                            </datalist>
+                            </select>
                         </div>
 
                         <div>
+                            <div class="muted-label mb-1">CATEGORY</div>
                             <select class="edit-input" name="category" style="cursor:pointer">
                                 <option value="artwork" selected>Artwork</option>
                                 <option value="tool">Tool</option>
