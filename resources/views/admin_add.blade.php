@@ -64,12 +64,8 @@
                     <div>
                         <div class="muted-label mb-1">CATEGORY</div>
                         <select class="edit-input" name="category" style="cursor:pointer">
-                            <option value="artwork" {{ old('category') === 'artwork' ? 'selected' : '' }}>
-                                Artwork
-                            </option>
-                            <option value="tool" {{ old('category') === 'tool' ? 'selected' : '' }}>
-                                Tool
-                            </option>
+                            <option value="artwork" {{ old('category') === 'artwork' ? 'selected' : '' }}>Artwork</option>
+                            <option value="tool" {{ old('category') === 'tool' ? 'selected' : '' }}>Tool</option>
                         </select>
                     </div>
 
@@ -81,8 +77,7 @@
 
                     <div>
                         <div class="muted-label mb-1">DESCRIPTION</div>
-                        <textarea class="edit-input" name="description" rows="4"
-                                  style="resize:vertical"
+                        <textarea class="edit-input" name="description" rows="4" style="resize:vertical"
                                   placeholder="Description of the product…">{{ old('description') }}</textarea>
                     </div>
 

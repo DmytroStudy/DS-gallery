@@ -111,29 +111,29 @@
                 <div class="border-top pt-3 d-flex flex-column align-items-start gap-2">
 
                     {{-- Qty --}}
-                    <div class="qty-control" style="width: 104px;">
-                        <button type="button" class="qty-btn"
-                                onclick="let i=document.getElementById('detail-qty');let d=document.getElementById('detail-qty-display');i.value=Math.max(1,+i.value-1);d.textContent=i.value">−</button>
-                        <span id="detail-qty-display" class="qty-num d-flex align-items-center justify-content-center" style="font-size:14px; flex-grow: 1;">1</span>
-                        <button type="button" class="qty-btn"
-                                onclick="let i=document.getElementById('detail-qty');let d=document.getElementById('detail-qty-display');i.value=+i.value+1;d.textContent=i.value">+</button>
+                    <div class="qty-control" style="width:104px">
+                        <button type="button" class="qty-btn" onclick="let i=document.getElementById('detail-qty');i.value=Math.max(1,+i.value-1)">−</button>
+                        <input id="detail-qty" class="qty-num" type="number" name="quantity" value="1" min="1"
+                               style="width:44px;border:none;text-align:center;font-size:14px;background:none;outline:none;-moz-appearance:textfield"/>
+                        <button type="button" class="qty-btn" onclick="let i=document.getElementById('detail-qty');i.value=+i.value+1">+</button>
                     </div>
 
                     {{-- Cart + Saved --}}
                     @php $isSaved = in_array($product->product_id, session('saved', [])); @endphp
-                    <div class="d-flex gap-2" style="width: 104px;">
+                    <div class="d-flex gap-2" style="width:104px">
 
-                        <form method="POST" action="{{ route('cart.add', $product) }}" style="flex: 1;">
+                        <form method="POST" action="{{ route('cart.add', $product) }}" style="flex:1" id="cart-form">
                             @csrf
-                            <input id="detail-qty" name="quantity" type="hidden" value="1"/>
-                            <button type="submit" class="sm-icon-btn" style="width: 100%;">
+                            <input type="hidden" name="quantity" id="cart-qty-hidden" value="1"/>
+                            <button type="submit" class="sm-icon-btn" style="width:100%"
+                                    onclick="document.getElementById('cart-qty-hidden').value=document.getElementById('detail-qty').value">
                                 <img src="{{ asset('icons/cart.svg') }}" alt="Add to cart"/>
                             </button>
                         </form>
 
-                        <form method="POST" action="{{ route('saved.toggle', $product) }}" style="flex: 1;">
+                        <form method="POST" action="{{ route('saved.toggle', $product) }}" style="flex:1">
                             @csrf
-                            <button type="submit" class="sm-icon-btn {{ $isSaved ? 'in-saved' : '' }}" style="width: 100%;">
+                            <button type="submit" class="sm-icon-btn {{ $isSaved ? 'in-saved' : '' }}" style="width:100%">
                                 <img src="{{ asset('icons/bookmark.svg') }}" alt="Save"/>
                             </button>
                         </form>

@@ -72,7 +72,7 @@ return new class extends Migration {
 
         // 5. Cart items (depends on users + products)
         Schema::create('DS_CartItems', function (Blueprint $table) {
-            $table->id('cart_id');
+            $table->id('cart_item_id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('product_id');
             $table->integer('quantity')->default(1);

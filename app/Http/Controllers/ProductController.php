@@ -63,12 +63,8 @@ class ProductController extends Controller
 
         $products = $query->paginate(9)->withQueryString();
 
-        $genres = Product::where('category', $category)
-            ->whereNotNull('genre')
-            ->select('genre')
-            ->distinct()
-            ->orderBy('genre')
-            ->pluck('genre');
+        $genres = Product::where('category', $category)->whereNotNull('genre')->select('genre')->distinct()
+            ->orderBy('genre')->pluck('genre');
 
         $artists = Artist::whereHas('products', function($q) use ($category) {
             $q->where('category', $category);

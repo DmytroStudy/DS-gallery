@@ -21,10 +21,7 @@ class AccountController extends Controller
     {
         $user = Auth::user();
 
-        $data = $request->validate([
-            'name'  => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $user->id,
-        ]);
+        $data = $request->validate(['name' => 'required|string|max:255', 'email' => 'required|email|unique:users,email,' . $user->id,]);
 
         $user->update($data);
 
@@ -33,14 +30,10 @@ class AccountController extends Controller
 
     public function updatePassword(Request $request)
     {
-        $request->validate([
-            'current_password' => 'required|current_password',
-            'password'         => ['required', 'confirmed', Password::min(8)],
-        ]);
+        $request->validate(['current_password' => 'required|current_password',
+            'password' => ['required', 'confirmed', Password::min(8)],]);
 
-        Auth::user()->update([
-            'password' => Hash::make($request->password),
-        ]);
+        Auth::user()->update(['password' => Hash::make($request->password),]);
 
         return back()->with('success', 'Password changed successfully.');
     }

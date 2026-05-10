@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CartItem;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -9,7 +10,6 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    // Show forms
     public function showLogin()
     {
         return Auth::check() ? redirect('/') : view('login');
@@ -20,17 +20,59 @@ class AuthController extends Controller
         return Auth::check() ? redirect('/') : view('register');
     }
 
-    // Login
+    private function mergeCartOnLogin(): void
+    {
+        $sessionCart = session('cart', []);
+        $userId = Auth::id();
+
+        // Loading items
+        $dbItems = CartItem::where('user_id', $userId)->get();
+        $merged = $sessionCart;
+
+        foreach ($dbItems as $dbItem) {
+            $id = $dbItem->product_id;
+
+            // Grouping items
+            if (isset($merged[$id])) {
+                $merged[$id]['quantity'] += $dbItem->quantity;
+            } else {
+                $product = $dbItem->product;
+                if (!$product) continue;
+
+                $merged[$id] = [
+                    'id' => $id,
+                    'title' => $product->title,
+                    'artist' => $product->artist?->name ?? '',
+                    'price' => (float) $product->price,
+                    'image' => $product->images->first()?->img_path ?? 'icons/img.svg',
+                    'quantity' => $dbItem->quantity,
+                ];
+            }
+        }
+
+        session(['cart' => $merged]);
+
+        // Updating DB
+        CartItem::where('user_id', $userId)->delete();
+        foreach ($merged as $id => $item) {
+            CartItem::create([
+                'user_id' => $userId,
+                'product_id' => $id,
+                'quantity' => $item['quantity'],
+            ]);
+        }
+    }
+
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'email'    => 'required|email',
+            'email' => 'required|email',
             'password' => 'required',
         ]);
 
-        if (Auth::attempt($credentials, $request->boolean('remember'))) {
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
+            $this->mergeCartOnLogin();
             return redirect()->intended('/');
         }
 
@@ -39,7 +81,6 @@ class AuthController extends Controller
         ])->onlyInput('email');
     }
 
-    // Register
     public function register(Request $request)
     {
         $request->validate([
@@ -61,7 +102,6 @@ class AuthController extends Controller
         return redirect('/');
     }
 
-    // Logout
     public function logout(Request $request)
     {
         Auth::logout();

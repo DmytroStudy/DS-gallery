@@ -120,10 +120,7 @@ class AdminProductController extends Controller
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $index => $file) {
                 $path = $file->store('images/art/uploads', 'public');
-                $product->images()->create([
-                    'img_path' => 'storage/' . $path,
-                    'order' => $index
-                ]);
+                $product->images()->create(['img_path' => 'storage/' . $path, 'order' => $index]);
             }
         }
 
@@ -146,7 +143,6 @@ class AdminProductController extends Controller
         ]);
 
         $artist = $data['artist'] ? Artist::firstOrCreate(['name' => $data['artist']]) : null;
-        $data['artist_id'] = $artist->artist_id;
 
         $product->update([
             'title' => $data['title'],
@@ -168,15 +164,11 @@ class AdminProductController extends Controller
             $lastOrder = $product->images()->max('order') ?? -1;
             foreach ($request->file('new_images') as $index => $file) {
                 $path = $file->store('images/art/uploads', 'public');
-                $product->images()->create([
-                    'img_path' => 'storage/' . $path,
-                    'order'    => $lastOrder + $index + 1
-                ]);
+                $product->images()->create(['img_path' => 'storage/' . $path, 'order'    => $lastOrder + $index + 1]);
             }
         }
 
-        return redirect()->route('admin.products')
-            ->with('success', 'Product updated.');
+        return redirect()->route('admin.products')->with('success', 'Product updated.');
     }
 
     public function destroy(Product $product)
@@ -184,18 +176,13 @@ class AdminProductController extends Controller
         $product->images()->delete();
         $product->delete();
 
-        return redirect()->route('admin.products')
-            ->with('success', 'Product and its images deleted.');
+        return redirect()->route('admin.products')->with('success', 'Product and its images deleted.');
     }
 
     public function edit(Product $product)
     {
         $product->load('images');
-
-        $genres = Product::distinct()
-            ->whereNotNull('genre')
-            ->orderBy('genre')
-            ->pluck('genre');
+        $genres = Product::distinct()->whereNotNull('genre')->orderBy('genre')->pluck('genre');
 
         return view('admin_detail', compact('product', 'genres'));
     }

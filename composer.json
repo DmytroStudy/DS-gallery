@@ -68,6 +68,7 @@
         "rebuild": [
             "composer dump-autoload",
             "php artisan migrate:fresh --seed",
+            "php artisan tinker",
             "php artisan optimize:clear",
             "php artisan storage:link",
             "php artisan serve"

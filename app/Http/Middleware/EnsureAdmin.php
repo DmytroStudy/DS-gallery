@@ -12,8 +12,7 @@ class EnsureAdmin
     public function handle(Request $request, Closure $next): Response
     {
         if (! Auth::check() || ! Auth::user()->isAdmin()) {
-            return redirect()->route('admin.login')
-                ->withErrors(['email' => 'Admin access required.']);
+            return redirect()->route('admin.login')->withErrors(['email' => 'Admin access required.']);
         }
 
         return $next($request);
